@@ -7,6 +7,8 @@
 
 	*{
 
+		font-family: sans-serif;
+
 		margin: 0;
 
 		border: 0;
@@ -16,23 +18,92 @@
 
 	a{
 
-		position: relative;
+		position: fixed;
 		
 	
 }
 
+
+	img{
+
+		position: fixed;
+
+		margin: 10px;
+
+	}
+
+	form{
+
+		position: fixed;
+
+		top:0;
+
+		bottom: auto;
+
+	}
+
+	input{
+
+		margin-top: 10px;
+
+		
+		margin-left: 10px;
+
+		margin-right: 10px;
+
+		float: right;
+
+		background: white;
+
+		
+
+	}
+
+	label{
+
+
+
+		margin: 0;
+
+		margin-top: 10px;
+
+		float: right;
+
+		color: white;
+
+	}
+
 	</style>
+
+	<link rel="icon"  href="img/icon.png">
 	
 </head>
 <body>
 
 	
-<a href="#" onclick="back();" id="back" ><img src="img/atras.png" width="10" height="10"></a>
+	
+
+	
+
+	<form>
+
+		<label for="size">Number of balls</label>
+		
+		<input type="text" name="size" size="2" value="25" id="size">
 
 
-	<canvas id="canvas"></canvas>
 
-	<input type="button" name="reset" value="reset">
+		<input type="button" name="reset" value="restart" onclick="reload()" >
+
+
+		<canvas id="canvas"></canvas>
+
+
+	</form>
+
+	
+<a href="index.html"  id="back" ><img src="img/atras.png" width="20" height="auto"></a>
+	
 
 
 

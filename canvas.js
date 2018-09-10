@@ -3,6 +3,8 @@ var canvas = document.getElementById("canvas");
 	var c = canvas.getContext("2d");
 	canvas.width= window.innerWidth;
 var container = document.querySelector('.container');
+
+var size = parseInt(document.getElementById('size').value);
 	
 canvas.height = window.innerHeight;
 var r_color = 255;
@@ -26,6 +28,13 @@ window.addEventListener('mousemove', function(e){
 
 })
 
+window.addEventListener('keyup', function(e){
+
+	size =parseInt(document.getElementById('size').value)
+
+	init();
+
+})
 
 	
 
@@ -44,6 +53,7 @@ window.addEventListener('resize', function(event){
 	canvas.width= window.innerWidth;
 
 	canvas.height = window.innerHeight;
+
 	init();
 })
 
@@ -155,7 +165,7 @@ var circleArray = [];
 function init(){
 	circleArray = [];
 
-	for (var i=0; i<150; i++) {
+	for (var i=0; i<size; i++) {
 	
 	var radio = Math.random() * 5 +1;
 
@@ -263,6 +273,13 @@ function animar() {
 	
 	
 	
+
+}
+
+
+function reload(){
+
+	location.reload();
 
 }
 
