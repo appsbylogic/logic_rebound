@@ -11,6 +11,8 @@ var r_color = 255;
 var g_color = 255;
 var b_color = 255;
 var score = 0;
+
+var touch;
 c.font = "30px Arial";
 c.strokeText("Hello World",30,50);
 
@@ -25,6 +27,17 @@ window.addEventListener('mousemove', function(e){
 	mouse.x = e.pageX;
 
 	mouse.y = e.pageY;
+
+})
+
+window.addEventListener('touchmove', function(e){
+
+	touch =e.targetTouches[0];
+
+		mouse.x = touch.pageX;
+
+		mouse.y = touch.pageY;
+
 
 })
 

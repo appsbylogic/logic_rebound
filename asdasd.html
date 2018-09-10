@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>asd</title>
+	<title>Secret</title>
 
 	<style type="text/css">
 
@@ -13,7 +13,31 @@
 
 		border: 0;
 
-		background: url("img/fondo.png") no-repeat center center;
+		
+	}
+
+	
+
+	.background{
+
+		width: 100%;
+  				
+  	top: 0;
+ 				
+ 	left: 0;
+ 				
+ 	bottom: -80px;
+  				
+  	position: fixed;
+ 				
+ 	z-index: -1;
+  				
+  	background: url("img/fondo.png") no-repeat center center;
+  				
+  	background-size: cover;
+  				
+  	transform: translate3d(0,0,0);
+
 	}
 
 	a{
@@ -73,19 +97,28 @@
 
 	}
 
+
+
+	@media(max-width: 899px){
+
+
+			*{
+
+				font-size: 3vw;
+			}
+
+	}
+
 	</style>
 
-	<link rel="icon"  href="img/icon.png">
+	<link rel="icon"  href="img/favicon.ico">
 	
 </head>
 <body>
 
-	
-	
-
-	
-
-	<form>
+	<div class="background">
+		
+		<form>
 
 		<label for="size">Number of balls</label>
 		
@@ -103,6 +136,15 @@
 
 	
 <a href="index.html"  id="back" ><img src="img/atras.png" width="20" height="auto"></a>
+
+	</div>
+
+	
+	
+
+	
+
+	
 	
 
 
