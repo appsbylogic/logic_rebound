@@ -3,6 +3,8 @@
 <head>
 	<title>Secret</title>
 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 	<style type="text/css">
 
 	*{
@@ -12,6 +14,11 @@
 		margin: 0;
 
 		border: 0;
+
+		overflow: hidden;
+
+		resize: none;
+
 
 		
 	}
@@ -79,6 +86,8 @@
 
 		background: white;
 
+		font-size: 4vw;
+
 		
 
 	}
@@ -95,16 +104,24 @@
 
 		color: white;
 
+		font-size: 4vw;
+
 	}
 
 
 
-	@media(max-width: 899px){
+	@media(min-width: 900px){
 
 
-			*{
+			input{
 
-				font-size: 3vw;
+				font-size: 2vw;
+
+			}
+
+			label{
+
+				font-size: 2vw;
 			}
 
 	}
@@ -122,7 +139,7 @@
 
 		<label for="size">Number of balls</label>
 		
-		<input type="text" name="size" size="2" value="25" id="size">
+		<input type="number" name="size" value="25" id="size" style="width: 2em;">
 
 
 

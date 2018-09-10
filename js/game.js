@@ -561,32 +561,10 @@ this.update = function(){
 
 	angulo+=5;
 
+	velocidad = true;
 
-	if(velocidad){
-			
-            if(this.velx>0){
 
-            	this.velx=13;
-			
-            }
-			
-            if(this.velx<0){
-
-            	this.velx=-13
-				
-            }
-			
-            if(this.vely>0){
-			
-            	this.vely=13;
-			
-            }
-			
-            if(this.vely<0){
-			
-            	this.vely=-13
-        }
-    }
+	
 
 			if(lentitud){
 
@@ -930,9 +908,17 @@ var audio_score = document.getElementById("audio_score");
 
 			velocidad=true;
 
+			velocidad_aumentar();
+
+			poder=0;
+
+			
+
 			
 		}
 	}
+
+	
 	
 
 	this.x+=this.velx;
@@ -943,6 +929,40 @@ var audio_score = document.getElementById("audio_score");
 	
 	}
 
+
+}
+
+function velocidad_aumentar(){
+
+	console.log('asasd')
+
+
+		if(velocidad){
+			
+            if(ball.velx>0){
+
+            	ball.velx+=5;
+			
+            }
+			
+            if(ball.velx<0){
+
+            	ball.velx-=5;
+				
+            }
+			
+            if(ball.vely>0){
+			
+            	ball.vely+=5;
+			
+            }
+			
+            if(ball.vely<0){
+			
+            	ball.vely-=5
+          }
+
+        }
 
 }
 
@@ -1009,6 +1029,8 @@ function bola2(){
 
 	if(bola2_y+15>y_r && ball2_over_r ==0){
 
+		audio_lose.play();
+
 		aparecer = false;
 
 			velocidad = false;
@@ -1035,7 +1057,9 @@ function bola2(){
 
 			bola2_velx = 0;
 			
+			perder=true;
 
+			menu_perder=1;
 			
 
 			close_m = 0;
@@ -1196,7 +1220,7 @@ function doSetTimeout_3(){
 
 				visible = true;
 
-				poder = 0;
+				poder = Math.floor(Math.random()*4);
 
 				power_posicion = Math.floor(Math.random()*1)
 

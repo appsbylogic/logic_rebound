@@ -30,6 +30,19 @@ window.addEventListener('mousemove', function(e){
 
 })
 
+window.addEventListener('mousedown', function(e){
+
+		if(size != parseInt(document.getElementById('size').value)){
+
+			size = parseInt(document.getElementById('size').value)
+
+			init();
+
+		}
+
+
+})
+
 window.addEventListener('touchmove', function(e){
 
 	touch =e.targetTouches[0];
