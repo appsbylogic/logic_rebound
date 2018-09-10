@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+    	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+    	
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5,user-scalable=0">
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="full-screen" content="yes"/>
+  		<meta name="screen-orientation" content="portrait"/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+        
+        
+		<title>menu</title>
+       	
+		<script type="text/javascript" src="js/game.js"></script>
+
+		<script type="text/javascript" src="js/edit.js"></script>
+
+
+
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		
+        
+    </head>
+    
+<body>
+
+	
+
+	
+
+	<div id="background-image"></div>
+        
+    <div id="page" class="visible">
+
+    	<div id="juego">
+
+    		<canvas id="canvas"></canvas>
+
+			<h1 id="high" >High Score</h1>
+
+			<h1 id="local"></h1>
+
+			<img src="img/x2.png" width="0px" height="0px" id="x2">
+
+			<img src="img/velocidad.png" width="0px" height="0px" id="velocidad">
+
+			<img src="img/lentitud.png" width="0px" height="0px" id="lentitud">
+
+			<img src="img/2balls.png" width="0px" height="0px" id="balls">
+
+			<img src="img/portal.png" width="0px" height="0px" id="portal">
+
+			<img src="img/portal_i.png" width="0px" height="0px" id="portal_i">
+
+			<img src="img/pausa.png" width="0px" height="0px" id="imagen">
+
+			<img src="img/boton_pausa.png" id="pausa" width="0" height="0">
+
+			<img src="img/menu.png" width="0px" height="0px" id="menu_pausa">
+
+			<h1 id="score"></h1>
+
+			<h1 id="coins_gotten"></h1>
+		
+			<img src="img/coin.png" id="coins_img_gotten">
+
+		</div>
+
+    	<div id="menu">
+        
+		<a href="image_credits.html" id="credits" onclick="
+			/*AdMob.prepareInterstitial({
+   			adId: admobid.interstitial,
+    
+    		autoShow: true
+
+  			});*/">Credits</a>
+
+		<h6 id="version" href='asdasd.html'><a href="asdasd.html">V 2.0</a></h6>
+
+		
+
+		<h1 id="title">REBOUND</h1>
+	
+		<h1 id="h1"  onclick="ocultar();">PLAY</h1>
+
+		<a href="#" onclick="abrir_editar()"><img src="img/edit.png" id="edit"></a>
+
+		<img src="img/music.png" id="sound" onclick="quitar_sonido();">
+		<img src="img/sound.png" id="music" onclick="quitar_musica();">
+
+		<img src="img/coin.png" id="coin_img">
+
+
+
+		</div>
+		<h1 id="coin">0</h1>
+		
+		
+		
+		<img id="prueba_in_game" src="img/balls/in game/prueba.png" width="0" height="0">
+		<img id="default_in_game" src="img/balls/in game/default.png" width="0" height="0">
+		<img id="pacman_in_game" src="img/balls/in game/pac man.png" width="0" height="0">
+		<img id="rubik_in_game" src="img/balls/in game/rubik.png" width="0" height="0">
+		<img id="mexico_in_game" src="img/balls/in game/mexico.png" width="0" height="0">
+		<img id="brasil_in_game" src="img/balls/in game/brasil.png" width="0" height="0">
+		<img id="alemania_in_game" src="img/balls/in game/alemania.png" width="0" height="0">
+		<img id="russia_in_game" src="img/balls/in game/russia.png" width="0" height="0">
+		<img id="portugal_in_game" src="img/balls/in game/portugal.png" width="0" height="0">
+		<img id="españa_in_game" src="img/balls/in game/españa.png" width="0" height="0">
+		<img id="argentina_in_game" src="img/balls/in game/argentina.png" width="0" height="0">
+		<img id="godzilla_in_game" src="img/balls/in game/godzilla.png" width="0" height="0">
+		<img id="wefere_in_game" src="img/balls/in game/wefere.png" width="0" height="0">
+		<img id="inglaterra_in_game" src="img/balls/in game/inglaterra.png" width="0" height="0">
+		<img id="francia_in_game" src="img/balls/in game/france.png" width="0" height="0">
+		<img id="prohibido_in_game" src="img/balls/in game/prohibido.png" width="0" height="0">
+		<img id="corazon_in_game" src="img/balls/in game/heart.png" width="0" height="0">
+		<img id="avion_in_game" src="img/balls/in game/plane.png" width="0" height="0">
+		<img id="tierra_in_game" src="img/balls/in game/earth.png" width="0" height="0">
+		<img id="angry_in_game" src="img/balls/in game/angry.png" width="0" height="0">
+		<img id="aim_in_game" src="img/balls/in game/aim.png" width="0" height="0">
+		<img id="gear_in_game" src="img/balls/in game/gear.png" width="0" height="0">	
+		<img id="spinner_in_game" src="img/balls/in game/spinner.png" width="0" height="0">
+		<img id="illuminati_in_game" src="img/balls/in game/illuminati.png" width="0" height="0">	
+		<img id="music_in_game" src="img/balls/in game/music.png" width="0" height="0">
+
+			<audio autoplay loop id="audio">
+    	
+    	<source src="song.mp3" type="audio/mp3">
+    </audio>
+
+    	<audio  id="audio_score">
+    	
+    	<source src="Bounce.mp3" type="audio/mp3">
+    </audio>
+
+    <audio   id="audio_bounce">
+    	
+    	<source src="Bounce.mp3" type="audio/mp3">
+    </audio>
+
+    <audio  id="audio_lose">
+    	
+    	<source src="Lose.mp3" type="audio/mp3">
+    </audio>
+    
+    <audio  id="audio_buy">
+    	
+    	<source src="Buy.mp3" type="audio/mp3">
+    </audio>
+
+    <audio  id="audio_buy_fail">
+    	
+    	<source src="Buy fail.mp3" type="audio/mp3">
+    </audio>
+
+	</div>
+		
+		<div id="div_edit" class="edit">
+			<p id="counter"></p>
+				<img src=""  id="shadow" onclick="blur_color();" >
+			<a href="#" onclick="back();" id="back" ><img src="img/atras.png" width="10" height="10"></a>
+			<img id="default" src="img/balls/default.png" width="0" height="0">
+			<img id="prueba" src="img/balls/prueba.png" width="0" height="0">
+			<img id="pacman" src="img/balls/pac man.png" width="0" height="0">
+			<img id="rubik" src="img/balls/rubik.png" width="0" height="0">
+			<img id="mexico" src="img/balls/mexico.png" width="0" height="0">
+			<img id="alemania" src="img/balls/alemania.png" width="0" height="0">
+			<img id="brasil" src="img/balls/brasil.png" width="0" height="0">
+			<img id="russia" src="img/balls/russia.png" width="0" height="0">
+			<img id="portugal" src="img/balls/portugal.png" width="0" height="0">
+			<img id="argentina" src="img/balls/argentina.png" width="0" height="0">
+			<img id="españa" src="img/balls/españa.png" width="0" height="0">
+			<img id="godzilla" src="img/balls/godzilla.png" width="0" height="0">
+			<img id="inglaterra" src="img/balls/inglaterra.png" width="0" height="0">
+			<img id="wefere" src="img/balls/wefere.png" width="0" height="0">
+			<img id="francia" src="img/balls/france.png" width="0" height="0">
+			<img id="prohibido" src="img/balls/prohibido.png" width="0" height="0">
+			<img id="corazon" src="img/balls/heart.png" width="0" height="0">
+			<img id="avion" src="img/balls/plane.png" width="0" height="0">
+			<img id="tierra" src="img/balls/earth.png" width="0" height="0">
+			<img id="angry" src="img/balls/angry.png" width="0" height="0">
+			<img id="aim" src="img/balls/aim.png" width="0" height="0">
+			<img id="gear" src="img/balls/gear.png" width="0" height="0">	
+			<img id="spinner" src="img/balls/spinner.png" width="0" height="0">
+			<img id="illuminati" src="img/balls/illuminati.png" width="0" height="0">	
+			<img id="music_img" src="img/balls/music.png" width="0" height="0">
+
+			<canvas id="canvas_edit" ></canvas>
+			<img id="izquierda" src="img/izquierda.png" onclick="cambiar_skin_izquierda();">
+			<img src="img/derecha.png" id="derecha" onclick="cambiar_skin_derecha();">
+			<h1 id="select">Default</h1>
+
+			<div >
+				<img src="img/coin.png" id="prize">
+			<h1 id="prize_text">30</h1>
+			</div>
+			
+			<img id="buy" src="img/buy.png" onclick="comprar();">
+
+			
+			
+		</div>
+
+	<script type="text/javascript">
+			
+			if(localStorage.getItem("coins")){
+				document.getElementById("coin").innerHTML = localStorage.getItem("coins");
+			}else{
+				document.getElementById("coin").innerHTML = 0;
+			}
+
+	</script>
+
+
+	
+
+	<script type="text/javascript" src="cordova.js"></script>
+    
+    <script type="text/javascript" src="js/script.js" ></script>
+
+    
+
+	
+    </body>
+</html>

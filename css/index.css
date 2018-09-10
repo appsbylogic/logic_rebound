@@ -1,0 +1,564 @@
+html,body {
+
+	touch-action: relative;
+
+	font-family: pixel_digivolveregular;
+
+	margin: 0px;
+		
+	overflow: hidden;
+
+	 -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+
+}
+
+
+#background-image{
+
+	width: 100%;
+  				
+  	top: 0;
+ 				
+ 	left: 0;
+ 				
+ 	bottom: -80px;
+  				
+  	position: fixed;
+ 				
+ 	z-index: -1;
+  				
+  	background: url("../img/fondo.png") no-repeat center center;
+  				
+  	background-size: cover;
+  				
+  	transform: translate3d(0,0,0);
+
+}
+
+
+#h1 {
+
+	position: fixed;
+		
+	color: white;
+		
+    top: 50%;
+    	
+    left: 50%;
+    	
+    transform: translate(-50%, -50%);
+
+    cursor: pointer;
+
+}
+
+	
+a {
+
+	color: white;
+	
+	text-decoration: none;
+
+}
+
+a:active {
+
+	color: white;
+			
+	text-decoration: none;
+
+}
+
+#score {
+padding-top: 0%;
+
+margin-top: 0%;
+	font-size: 10vw;
+
+	position: fixed;
+		
+	color: white;
+		
+    top: 55%;
+    	
+    left: 50%;
+    	
+    transform: translate(-50%, -55%);
+	
+}
+
+#coins_gotten {
+
+	padding-top: 0%;
+
+	margin-top: 0%;
+
+	text-align: left;
+
+	border: 15px;
+
+	padding-left: 15px;
+
+	margin-left: 4%;
+	visibility: hidden;
+
+	font-size: 5vw;
+
+	position: fixed;
+		
+	color: white;
+		
+    top: 55%;
+    	
+    left: 85%;
+    	
+    transform: translate(-85%, -55%);
+	
+}
+
+#coins_img_gotten {
+
+	visibility: hidden;
+
+	position: fixed;
+
+	border: 15px;
+
+	padding-right: 10px;
+
+	width: 5%;
+
+	padding-bottom: 1%;
+
+	align-content: center;
+
+	padding-top: 1%;
+
+	margin-bottom: 0%;
+
+	height: auto;
+		
+	color: white;
+		
+    top: 55%;
+    	
+    left: 80%;
+    	
+    transform: translate(-80%, -55%);
+	
+}
+
+#pausa {
+
+	position: fixed;
+    
+    top: 10px;
+    
+    right: 10px;
+
+    cursor: pointer;
+
+}
+
+
+#credits{
+
+	position:fixed;
+	
+	left:10px;
+	
+	bottom:0px;
+
+}
+
+#version{
+
+	color: white;
+
+	position:fixed;
+   	
+   	right:10px;
+   	
+   	bottom:0px;
+
+   	margin-bottom: 5px;
+   	
+}
+
+	#imagen{
+
+		position: fixed;
+		
+		top: 50%;
+    	
+    	left: 50%;
+    	
+    	transform: translate(-50%, -50%);
+
+	}
+	
+	#menu_pausa{
+		position: fixed;
+		
+		top: 50%;
+    	
+    	left: 50%;
+    	
+    	transform: translate(-50%, -50%);
+	}
+
+	#title{
+
+		position: fixed;
+		top: 70px;
+		color: white;
+
+		text-align: center;
+
+		font-size: 17vw;
+
+		font-style: oblique;
+
+		left: 50%;
+    	
+    	transform: translate(-50%, -50%);
+
+
+	}
+
+	#local{
+
+		font-size: 5vw;
+
+		position: fixed;
+		
+		color: white;
+		
+    	margin-top: 4%;
+
+    	margin-left: 6%;
+
+    	text-align: center;
+
+
+	}
+
+	#high{
+
+		position: fixed;
+
+		font-size: 2vw;
+		position: fixed;
+		color: white;
+		margin-left: 10px;
+
+	}
+
+	#canvas{
+		position: fixed;
+	}
+
+	#edit{
+
+		position: fixed;
+		
+		top: 3%;
+    	
+    	left: 3%;
+
+    	height: 5vw; 
+   	 	
+   	 	width: 5vw; 
+    	
+    	transform: translate(-3%, -3%);	
+
+    	cursor: pointer;	
+
+	}
+
+	#div_edit{
+
+		position: fixed;
+
+		visibility: hidden;
+	}
+
+	#izquierda{
+
+		position: fixed;
+
+		height: 10vw;
+
+		width: 10vw;
+		
+		top: 45%;
+    	
+    	left: 10%;
+    	
+    	transform: translate(-10%, -45%);
+
+    	visibility: hidden;
+
+    	cursor: pointer;
+
+
+	}
+	#derecha{
+
+		position: fixed;
+
+		height: 10vw;
+
+		width: 10vw;
+		
+		top: 45%;
+    	
+    	left: 90%;
+    	
+    	transform: translate(-90%, -45%);	
+
+    	visibility: hidden;
+
+    	cursor: pointer;
+
+	}
+
+	#select{
+
+	position: fixed;
+		
+	color: white;
+
+	font-size: 6vw;
+		
+    top: 60%;
+    	
+    left: 50%;
+    	
+    transform: translate(-50%, -60%);
+
+	}
+
+	#shadow{
+
+	position: fixed;
+		
+    top: 1%;
+    	
+    left: 95%;
+    	
+    transform: translate(-95%, -1%);
+
+    cursor: pointer;
+	}
+
+	#back{
+
+	position: fixed;
+		
+	color: white;
+    top: 2%;
+    	
+    left: 3%;
+    	
+    transform: translate(-3%, -2%);
+
+    cursor: pointer;
+	}
+
+	#coin_img{
+		position: fixed;
+
+		color: white;
+
+		width: 5%;
+
+		height: auto;
+
+		padding-right: 2%;
+
+		top: 1%;
+
+		left: 45%;
+
+		transform: translate(-45%,-1%);
+	}
+
+	#coin{
+
+		position: fixed;
+
+		color: rgb(255, 255, 255);
+
+		font-size: 4vw;
+
+		text-align: center;
+
+		margin-top: 0px;
+
+		margin-left: 2%;
+
+		top: 1%;
+
+		left: 50%;
+
+		transform: translate(-50%,-1%);
+
+
+	}
+
+	#buy{
+
+		cursor: pointer;
+
+		align-content: center;
+
+		position: fixed;
+
+		width: 25%;
+   		height: auto;
+
+   		visibility: hidden;
+
+		top: 90%;
+
+		left: 50%;
+
+		transform: translate(-50%,-90%);
+	}
+
+	#prize{
+
+		
+
+		position: fixed;
+
+		width: 10%;
+   		height: auto;
+
+
+
+   		
+		top: 74%;
+
+		left: 40%;
+
+		transform: translate(-40%,-74%);
+
+		visibility: hidden;
+
+
+
+	}
+
+	#prize_text{
+
+		text-align: center;
+		margin-top: 0%;
+		margin-left: 7%;
+		position: fixed;
+
+		color: white;
+
+		font-size: 10vw;
+		top: 74%;
+
+		left: 50%;
+
+		transform: translate(-50%,-74%);
+
+		visibility: hidden;
+
+	}
+
+	#song{
+
+		visibility: hidden;
+	}
+
+	#music{
+
+		position: fixed;
+		width: 5%;
+
+		height: auto;
+
+
+		top: 2%;
+
+		left: 95%;
+
+		transform: translate(-95%,-2%);
+
+		cursor: pointer;
+
+
+	}
+
+	#sound{
+
+		cursor: pointer;
+
+		position: fixed;
+		width: 5%;
+
+		height: auto;
+
+
+		top: 2%;
+
+		left: 88%;
+
+		transform: translate(-88%,-2%);
+
+	}
+
+	#counter{
+		text-align: center;
+		
+		position: fixed;
+
+		color: white;
+
+		font-size: 5vw;
+		top: 10%;
+
+		left: 50%;
+
+		transform: translate(-50%,-10%);
+
+
+
+	}
+
+	#menu{
+
+		visibility: visible;
+	}
+	
+	#juego{
+
+		margin: 0px;
+
+		padding: 0px;
+
+		border: 0px;
+
+		visibility: hidden;
+	}
+	
+
+	@font-face {
+    font-family: 'pixel_digivolveregular';
+    src: url('../pixel_digivolve-webfont.woff2') format('woff2'),
+         url('../pixel_digivolve-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}	
