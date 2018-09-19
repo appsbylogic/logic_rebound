@@ -3,7 +3,7 @@
 <html>
     <head>
 
-    	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    	<script>/*document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')*/</script>
 
     	
         <meta charset="utf-8">
@@ -16,6 +16,7 @@
         
         
 		<title>menu</title>
+
        	
 		<script type="text/javascript" src="js/game.js"></script>
 
@@ -50,23 +51,25 @@
 
 			<h1 id="local"></h1>
 
-			<img src="img/x2.png" width="0px" height="0px" id="x2">
+			<img src="img/x2.png" style="visibility:hidden" id="x2">
 
-			<img src="img/velocidad.png" width="0px" height="0px" id="velocidad">
+			<img src="img/velocidad.png" style="visibility:hidden" id="velocidad">
 
-			<img src="img/lentitud.png" width="0px" height="0px" id="lentitud">
+			<img src="img/reverse.png" style="visibility:hidden" id="reverse">
 
-			<img src="img/2balls.png" width="0px" height="0px" id="balls">
+			<img src="img/lentitud.png" style="visibility:hidden" id="lentitud">
 
-			<img src="img/portal.png" width="0px" height="0px" id="portal">
+			<img src="img/2balls.png" style="visibility:hidden" id="balls">
 
-			<img src="img/portal_i.png" width="0px" height="0px" id="portal_i">
+			<img src="img/portal.png" style="visibility:hidden" id="portal">
 
-			<img src="img/pausa.png" width="0px" height="0px" id="imagen">
+			<img src="img/portal_i.png" style="visibility:hidden" id="portal_i">
 
-			<img src="img/boton_pausa.png" id="pausa" width="0" height="0">
+			<img src="img/pausa.png" id="imagen">
 
-			<img src="img/menu.png" width="0px" height="0px" id="menu_pausa">
+			<img src="img/boton_pausa.png" id="pausa" style="visibility:hidden">
+
+			<img src="img/menu.png" id="menu_pausa">
 
 			<h1 id="score"></h1>
 
@@ -86,7 +89,11 @@
 
   			});*/">Credits</a>
 
-		<h6 id="version" href='asdasd.html'><a href="asdasd.html">V 2.0</a></h6>
+  		<img src="img/twitter.png" id="twitter" onclick="window.open('https://twitter.com/Maldonado6F','_blank')">
+
+  		<img src="img/web.png" id="web" onclick="window.open('https://appsbylogic.github.io/','_blank')">
+
+		<h6 id="version" href='asdasd.html'><a href="asdasd.html">V 3.0</a></h6>
 
 		
 
@@ -108,33 +115,38 @@
 		
 		
 		
-		<img id="prueba_in_game" src="img/balls/in game/prueba.png" width="0" height="0">
-		<img id="default_in_game" src="img/balls/in game/default.png" width="0" height="0">
-		<img id="pacman_in_game" src="img/balls/in game/pac man.png" width="0" height="0">
-		<img id="rubik_in_game" src="img/balls/in game/rubik.png" width="0" height="0">
-		<img id="mexico_in_game" src="img/balls/in game/mexico.png" width="0" height="0">
-		<img id="brasil_in_game" src="img/balls/in game/brasil.png" width="0" height="0">
-		<img id="alemania_in_game" src="img/balls/in game/alemania.png" width="0" height="0">
-		<img id="russia_in_game" src="img/balls/in game/russia.png" width="0" height="0">
-		<img id="portugal_in_game" src="img/balls/in game/portugal.png" width="0" height="0">
-		<img id="españa_in_game" src="img/balls/in game/españa.png" width="0" height="0">
-		<img id="argentina_in_game" src="img/balls/in game/argentina.png" width="0" height="0">
-		<img id="godzilla_in_game" src="img/balls/in game/godzilla.png" width="0" height="0">
-		<img id="wefere_in_game" src="img/balls/in game/wefere.png" width="0" height="0">
-		<img id="inglaterra_in_game" src="img/balls/in game/inglaterra.png" width="0" height="0">
-		<img id="francia_in_game" src="img/balls/in game/france.png" width="0" height="0">
-		<img id="prohibido_in_game" src="img/balls/in game/prohibido.png" width="0" height="0">
-		<img id="corazon_in_game" src="img/balls/in game/heart.png" width="0" height="0">
-		<img id="avion_in_game" src="img/balls/in game/plane.png" width="0" height="0">
-		<img id="tierra_in_game" src="img/balls/in game/earth.png" width="0" height="0">
-		<img id="angry_in_game" src="img/balls/in game/angry.png" width="0" height="0">
-		<img id="aim_in_game" src="img/balls/in game/aim.png" width="0" height="0">
-		<img id="gear_in_game" src="img/balls/in game/gear.png" width="0" height="0">	
-		<img id="spinner_in_game" src="img/balls/in game/spinner.png" width="0" height="0">
-		<img id="illuminati_in_game" src="img/balls/in game/illuminati.png" width="0" height="0">	
-		<img id="music_in_game" src="img/balls/in game/music.png" width="0" height="0">
+		<img id="prueba_in_game" src="img/balls/in game/prueba.png" style="visibility:hidden">
+		<img id="default_in_game" src="img/balls/in game/default.png" style="visibility:hidden">
+		<img id="pacman_in_game" src="img/balls/in game/pac man.png" style="visibility:hidden">
+		<img id="rubik_in_game" src="img/balls/in game/rubik.png" style="visibility:hidden">
+		<img id="mexico_in_game" src="img/balls/in game/mexico.png" style="visibility:hidden">
+		<img id="brasil_in_game" src="img/balls/in game/brasil.png" style="visibility:hidden">
+		<img id="alemania_in_game" src="img/balls/in game/alemania.png" style="visibility:hidden">
+		<img id="russia_in_game" src="img/balls/in game/russia.png" style="visibility:hidden">
+		<img id="portugal_in_game" src="img/balls/in game/portugal.png" style="visibility:hidden">
+		<img id="españa_in_game" src="img/balls/in game/españa.png" style="visibility:hidden">
+		<img id="argentina_in_game" src="img/balls/in game/argentina.png" style="visibility:hidden">
+		<img id="godzilla_in_game" src="img/balls/in game/godzilla.png" style="visibility:hidden">
+		<img id="wefere_in_game" src="img/balls/in game/wefere.png" style="visibility:hidden">
+		<img id="inglaterra_in_game" src="img/balls/in game/inglaterra.png" style="visibility:hidden">
+		<img id="francia_in_game" src="img/balls/in game/france.png" style="visibility:hidden">
+		<img id="prohibido_in_game" src="img/balls/in game/prohibido.png" style="visibility:hidden">
+		<img id="corazon_in_game" src="img/balls/in game/heart.png" style="visibility:hidden">
+		<img id="avion_in_game" src="img/balls/in game/plane.png" style="visibility:hidden">
+		<img id="tierra_in_game" src="img/balls/in game/earth.png" style="visibility:hidden">
+		<img id="angry_in_game" src="img/balls/in game/angry.png" style="visibility:hidden">
+		<img id="aim_in_game" src="img/balls/in game/aim.png" style="visibility:hidden">
+		<img id="gear_in_game" src="img/balls/in game/gear.png" style="visibility:hidden">	
+		<img id="spinner_in_game" src="img/balls/in game/spinner.png" style="visibility:hidden">
+		<img id="illuminati_in_game" src="img/balls/in game/illuminati.png" style="visibility:hidden">	
+		<img id="music_in_game" src="img/balls/in game/music.png" style="visibility:hidden">
+		<img id="canada_in_game" src="img/balls/in game/canada.png" style="visibility:hidden">
+		<img id="ace_in_game" src="img/balls/in game/ace.png" style="visibility:hidden">
+		<img id="sword_in_game" src="img/balls/in game/sword.png" style="visibility:hidden">
+		<img id="pencil_in_game" src="img/balls/in game/pencil.png" style="visibility:hidden">
+		<img id="cookie_in_game" src="img/balls/in game/cookie.png" style="visibility:hidden">
 
-			<audio autoplay loop id="audio">
+		<audio autoplay loop id="audio">
     	
     	<source src="song.mp3" type="audio/mp3">
     </audio>
@@ -170,31 +182,36 @@
 			<p id="counter"></p>
 				<img src=""  id="shadow" onclick="blur_color();" >
 			<a href="#" onclick="back();" id="back" ><img src="img/atras.png" width="20" height="auto"></a>
-			<img id="default" src="img/balls/default.png" width="0" height="0">
-			<img id="prueba" src="img/balls/prueba.png" width="0" height="0">
-			<img id="pacman" src="img/balls/pac man.png" width="0" height="0">
-			<img id="rubik" src="img/balls/rubik.png" width="0" height="0">
-			<img id="mexico" src="img/balls/mexico.png" width="0" height="0">
-			<img id="alemania" src="img/balls/alemania.png" width="0" height="0">
-			<img id="brasil" src="img/balls/brasil.png" width="0" height="0">
-			<img id="russia" src="img/balls/russia.png" width="0" height="0">
-			<img id="portugal" src="img/balls/portugal.png" width="0" height="0">
-			<img id="argentina" src="img/balls/argentina.png" width="0" height="0">
-			<img id="españa" src="img/balls/españa.png" width="0" height="0">
-			<img id="godzilla" src="img/balls/godzilla.png" width="0" height="0">
-			<img id="inglaterra" src="img/balls/inglaterra.png" width="0" height="0">
-			<img id="wefere" src="img/balls/wefere.png" width="0" height="0">
-			<img id="francia" src="img/balls/france.png" width="0" height="0">
-			<img id="prohibido" src="img/balls/prohibido.png" width="0" height="0">
-			<img id="corazon" src="img/balls/heart.png" width="0" height="0">
-			<img id="avion" src="img/balls/plane.png" width="0" height="0">
-			<img id="tierra" src="img/balls/earth.png" width="0" height="0">
-			<img id="angry" src="img/balls/angry.png" width="0" height="0">
-			<img id="aim" src="img/balls/aim.png" width="0" height="0">
-			<img id="gear" src="img/balls/gear.png" width="0" height="0">	
-			<img id="spinner" src="img/balls/spinner.png" width="0" height="0">
-			<img id="illuminati" src="img/balls/illuminati.png" width="0" height="0">	
-			<img id="music_img" src="img/balls/music.png" width="0" height="0">
+			<img id="default" src="img/balls/default.png" style="visibility:hidden">
+			<img id="prueba" src="img/balls/prueba.png" style="visibility:hidden">
+			<img id="pacman" src="img/balls/pac man.png" style="visibility:hidden">
+			<img id="rubik" src="img/balls/rubik.png" style="visibility:hidden">
+			<img id="mexico" src="img/balls/mexico.png" style="visibility:hidden">
+			<img id="alemania" src="img/balls/alemania.png" style="visibility:hidden">
+			<img id="brasil" src="img/balls/brasil.png" style="visibility:hidden">
+			<img id="russia" src="img/balls/russia.png" style="visibility:hidden">
+			<img id="portugal" src="img/balls/portugal.png" style="visibility:hidden">
+			<img id="argentina" src="img/balls/argentina.png" style="visibility:hidden">
+			<img id="españa" src="img/balls/españa.png" style="visibility:hidden">
+			<img id="godzilla" src="img/balls/godzilla.png" style="visibility:hidden">
+			<img id="inglaterra" src="img/balls/inglaterra.png" style="visibility:hidden">
+			<img id="wefere" src="img/balls/wefere.png" style="visibility:hidden">
+			<img id="francia" src="img/balls/france.png" style="visibility:hidden">
+			<img id="prohibido" src="img/balls/prohibido.png" style="visibility:hidden">
+			<img id="corazon" src="img/balls/heart.png" style="visibility:hidden">
+			<img id="avion" src="img/balls/plane.png" style="visibility:hidden">
+			<img id="tierra" src="img/balls/earth.png" style="visibility:hidden">
+			<img id="angry" src="img/balls/angry.png" style="visibility:hidden">
+			<img id="aim" src="img/balls/aim.png" style="visibility:hidden">
+			<img id="gear" src="img/balls/gear.png" style="visibility:hidden">	
+			<img id="spinner" src="img/balls/spinner.png" style="visibility:hidden">
+			<img id="illuminati" src="img/balls/illuminati.png" style="visibility:hidden">	
+			<img id="music_img" src="img/balls/music.png" style="visibility:hidden">
+			<img id="canada" src="img/balls/canada.png" style="visibility:hidden">
+			<img id="ace" src="img/balls/ace.png" style="visibility:hidden">
+			<img id="sword" src="img/balls/sword.png" style="visibility:hidden">
+			<img id="pencil" src="img/balls/pencil.png" style="visibility:hidden">
+			<img id="cookie" src="img/balls/cookie.png" style="visibility:hidden">
 
 			<canvas id="canvas_edit" ></canvas>
 			<img id="izquierda" src="img/izquierda.png" onclick="cambiar_skin_izquierda();">

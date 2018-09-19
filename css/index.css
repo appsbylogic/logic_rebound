@@ -16,6 +16,8 @@ html,body {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 
+                                  z-index: 1;
+
 }
 
 
@@ -182,6 +184,8 @@ margin-top: 0%;
 	color: white;
 
 	position:fixed;
+
+	margin-top: 0;
    	
    	right:10px;
    	
@@ -258,11 +262,29 @@ margin-top: 0%;
 		color: white;
 		margin-left: 10px;
 
+
+
 	}
 
 	#canvas{
 		position: fixed;
 	}
+
+	#canvas_edit{
+		position: fixed;
+
+		left: 0%;
+
+		top: 10%;
+
+		
+
+			
+
+		
+	}
+
+	
 
 	#edit{
 
@@ -457,6 +479,42 @@ margin-top: 0%;
 
 	}
 
+
+#web{
+
+	position: fixed;
+
+	width: 25px;
+
+	height: auto;
+
+	top: 85%;
+
+	right: 10px;
+
+	left: auto;
+
+	margin-bottom: 0px;
+
+}
+
+#twitter{
+
+	position: fixed;
+
+	width: 35px;
+
+	height: auto;
+
+	top: 75%;
+
+	right: 10px;
+
+	left: auto;
+
+	margin-bottom: 0px;
+
+}
 	#prize_text{
 
 		text-align: center;
@@ -551,6 +609,7 @@ margin-top: 0%;
 		border: 0px;
 
 		visibility: hidden;
+
 	}
 	
 

@@ -31,6 +31,11 @@ var comprar_spinner=0;
 var comprar_music=0;
 var comprar_illuminati=0;
 var comprar_angry=0;
+var comprar_canada = 0;
+var comprar_ace = 0;
+var comprar_cookie=0;
+var comprar_sword = 0;
+var comprar_pencil=0;
 
 var contador=1;
 
@@ -69,6 +74,10 @@ function abrir_editar(){
 
 	if(localStorage.getItem("ying")){
 		comprar_ying=localStorage.getItem("ying")
+	}
+
+	if(localStorage.getItem("canada")){
+		comprar_canada=localStorage.getItem("canada")
 	}
 
 	if(localStorage.getItem("pac")){
@@ -183,14 +192,14 @@ function abrir_editar(){
 
 	contador = parseInt(localStorage.getItem('img_grande'))+1
 
-	document.getElementById("counter").innerHTML = contador + "/25"
+	document.getElementById("counter").innerHTML = contador + "/30"
 
 	
 		}else{
 			cambiar_img =0
 			contador=1;
 
-	document.getElementById("counter").innerHTML = contador + "/25"
+	document.getElementById("counter").innerHTML = contador + "/30"
 		}
 	if(localStorage.getItem('shadow')){
 		blur = localStorage.getItem('shadow')
@@ -343,7 +352,191 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			}
 
 		
+		}else if(cambiar_img==6){
+
+
+			boton_compar.setAttribute("style", "visibility: visible")
+		
+			default_img = document.getElementById("cookie")
+
+			color = "#967052";
+
+			select.innerHTML = "Cookie"
+		
+			
+
+			precio.innerHTML = 20;
+
+			precio.setAttribute("style", "visibility:visible")
+
+			precio_img.setAttribute("style", "visibility:visible")
+
+			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+
+			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+
+			if(localStorage.getItem("cookie") == 1){
+
+
+				precio.setAttribute("style", "visibility:hidden")
+
+				precio_img.setAttribute("style", "visibility:hidden")
+
+				imagen_boton=1;
+
+				boton_compar.src = "img/select.png"
+
+			}else{
+
+				precio.setAttribute("style", "visibility:visible")
+
+				precio_img.setAttribute("style", "visibility:visible")
+
+				boton_compar.src = "img/buy.png"
+
+				imagen_boton=0;
+			}
+
+		
 		}else if(cambiar_img==7){
+
+
+			boton_compar.setAttribute("style", "visibility: visible")
+		
+			default_img = document.getElementById("ace")
+
+			color = "#62a7fc";
+
+			select.innerHTML = "ace"
+		
+			
+
+			precio.innerHTML = 20;
+
+			precio.setAttribute("style", "visibility:visible")
+
+			precio_img.setAttribute("style", "visibility:visible")
+
+			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+
+			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+
+			if(localStorage.getItem("ace") == 1){
+
+
+				precio.setAttribute("style", "visibility:hidden")
+
+				precio_img.setAttribute("style", "visibility:hidden")
+
+				imagen_boton=1;
+
+				boton_compar.src = "img/select.png"
+
+			}else{
+
+				precio.setAttribute("style", "visibility:visible")
+
+				precio_img.setAttribute("style", "visibility:visible")
+
+				boton_compar.src = "img/buy.png"
+
+				imagen_boton=0;
+			}
+
+		
+		}else if(cambiar_img==8){
+
+
+			boton_compar.setAttribute("style", "visibility: visible")
+		
+			default_img = document.getElementById("pencil")
+
+			color = "#fff187";
+
+			select.innerHTML = "Pencil"
+		
+			
+
+			precio.innerHTML = 25;
+
+			precio.setAttribute("style", "visibility:visible")
+
+			precio_img.setAttribute("style", "visibility:visible")
+
+			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+
+			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+
+			if(localStorage.getItem("pencil") == 1){
+
+
+				precio.setAttribute("style", "visibility:hidden")
+
+				precio_img.setAttribute("style", "visibility:hidden")
+
+				imagen_boton=1;
+
+				boton_compar.src = "img/select.png"
+
+			}else{
+
+				precio.setAttribute("style", "visibility:visible")
+
+				precio_img.setAttribute("style", "visibility:visible")
+
+				boton_compar.src = "img/buy.png"
+
+				imagen_boton=0;
+			}
+
+		
+		}else if(cambiar_img==9){
+
+
+			boton_compar.setAttribute("style", "visibility: visible")
+		
+			default_img = document.getElementById("sword")
+
+			color = "#c6c6c6";
+
+			select.innerHTML = "Sword"
+		
+			
+
+			precio.innerHTML = 30;
+
+			precio.setAttribute("style", "visibility:visible")
+
+			precio_img.setAttribute("style", "visibility:visible")
+
+			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+
+			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+
+			if(localStorage.getItem("sword") == 1){
+
+
+				precio.setAttribute("style", "visibility:hidden")
+
+				precio_img.setAttribute("style", "visibility:hidden")
+
+				imagen_boton=1;
+
+				boton_compar.src = "img/select.png"
+
+			}else{
+
+				precio.setAttribute("style", "visibility:visible")
+
+				precio_img.setAttribute("style", "visibility:visible")
+
+				boton_compar.src = "img/buy.png"
+
+				imagen_boton=0;
+			}
+
+		
+		}else if(cambiar_img==11){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -386,7 +579,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==14){	
+		}else if(cambiar_img==18){	
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -486,7 +679,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 	}
 
-		}else if(cambiar_img==15){
+		}else if(cambiar_img==19){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -533,7 +726,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==16){
+		}else if(cambiar_img==20){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -577,7 +770,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==17){
+		}else if(cambiar_img==21){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -624,7 +817,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==18){
+		}else if(cambiar_img==22){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -671,7 +864,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==19){
+		}else if(cambiar_img==23){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -718,7 +911,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==20){
+		}else if(cambiar_img==24){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -765,7 +958,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==21){
+		}else if(cambiar_img==25){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -811,7 +1004,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==22){
+		}else if(cambiar_img==26){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -857,7 +1050,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==23){
+		}else if(cambiar_img==27){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -903,7 +1096,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==24){
+		}else if(cambiar_img==28){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -924,7 +1117,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: hidden")
+			document.getElementById("derecha").setAttribute("style", "visibility: visible")
 
 			if(localStorage.getItem("francia") == 1){
 
@@ -949,7 +1142,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==13){
+		}else if(cambiar_img==17){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -1099,7 +1292,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==6){
+		}else if(cambiar_img==10){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -1193,7 +1386,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==11){
+		}else if(cambiar_img==15){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -1334,7 +1527,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==8){
+		}else if(cambiar_img==12){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -1381,7 +1574,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==9){
+		}else if(cambiar_img==13){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -1428,7 +1621,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==10){
+		}else if(cambiar_img==14){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -1475,7 +1668,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
-		}else if(cambiar_img==12){
+		}else if(cambiar_img==16){
 
 			boton_compar.setAttribute("style", "visibility: visible")
 
@@ -1522,7 +1715,54 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			}
 
+		}else if(cambiar_img==29){
+
+			boton_compar.setAttribute("style", "visibility: visible")
+
+			default_img = document.getElementById("canada")
+
+			color = "red";
+
+
+			precio.innerHTML = "30";
+
+
+			select.innerHTML = "Canada"
+			
+
+			precio.setAttribute("style", "visibility:visible")
+
+			precio_img.setAttribute("style", "visibility:visible")
+
+			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+
+			document.getElementById("derecha").setAttribute("style", "visibility: hidden")
+
+			if(localStorage.getItem("canada") == 1){
+
+
+				precio.setAttribute("style", "visibility:hidden")
+
+				precio_img.setAttribute("style", "visibility:hidden")
+
+				imagen_boton=1;
+
+				boton_compar.src = "img/select.png"
+
+			}else{
+
+				precio.setAttribute("style", "visibility:visible")
+
+				precio_img.setAttribute("style", "visibility:visible")
+
+				boton_compar.src = "img/buy.png"
+
+				imagen_boton=0;
+
+			}
 		}
+
+//------------------------FIN PELOTAS------------------------------------------------------------------------------------------------
 
  		c.clearRect(0,0,width,height)
 
@@ -1571,116 +1811,19 @@ function cambiar_skin_derecha(){
 
 	contador+=1
 
-	document.getElementById("counter").innerHTML = contador + "/25"
+	document.getElementById("counter").innerHTML = contador + "/30"
 
-	
+	if(cambiar_img<30){
+		cambiar_img++;
+		cambiar=cambiar_img
 
-	if(cambiar_img==0){
-	
-		cambiar_img=1;
-	
-		cambiar=1;
-	
-	} else if(cambiar_img==1){
-	
-		cambiar_img=2;
-	
-		cambiar=2;
-	
-	}else if(cambiar_img==2){
-
-		cambiar_img=3;
-	
-		cambiar=3;
-
-	}else if(cambiar_img==3){
-	
-		cambiar_img=4;
-	
-		cambiar=4;
-	
-	}else if(cambiar_img==4){
-		cambiar_img=5;
-
-		cambiar=5;
-	}else if(cambiar_img==5){
-		cambiar_img=6;
-
-		cambiar=6;
-	}else if(cambiar_img==6){
-		cambiar_img=7;
-
-		cambiar=7;
-	}else if(cambiar_img==7){
-		cambiar_img=8;
-
-		cambiar=8;
-	}else if(cambiar_img==8){
-		cambiar_img=9;
-
-		cambiar=9;
-	}else if(cambiar_img==9){
-		cambiar_img=10;
-
-		cambiar=10;
-	}else if(cambiar_img==10){
-		cambiar_img=11;
-
-		cambiar=11;
-	}else if(cambiar_img==11){
-		cambiar_img=12;
-
-		cambiar=12;
-	}else if(cambiar_img==12){
-		cambiar_img=13;
-
-		cambiar=13;
-	}else if(cambiar_img==13){
-		cambiar_img=14;
-
-		cambiar=14;
-
-	}else if(cambiar_img==14){
-		cambiar_img=15;
-
-		cambiar=15;
-	}else if(cambiar_img==15){
-		cambiar_img=16;
-
-		cambiar=16;
-	}else if(cambiar_img==16){
-		cambiar_img=17;
-
-		cambiar=17;
-	}else if(cambiar_img==17){
-		cambiar_img=18;
-
-		cambiar=18;
-	}else if(cambiar_img==18){
-		cambiar_img=19;
-
-		cambiar=19;
-	}else if(cambiar_img==19){
-		cambiar_img=20;
-
-		cambiar=20;
-	}else if(cambiar_img==20){
-		cambiar_img=21;
-
-		cambiar=21;
-	}else if(cambiar_img==21){
-		cambiar_img=22;
-
-		cambiar=22;
-	}else if(cambiar_img==22){
-		cambiar_img=23;
-
-		cambiar=23;
-	}else if(cambiar_img==23){
-		cambiar_img=24;
-
-		cambiar=24;
 	}
+
+	
+
+	
+
+	
 
 		
 }
@@ -1689,113 +1832,12 @@ function cambiar_skin_izquierda(){
 
 	contador-=1
 
-	document.getElementById("counter").innerHTML = contador + "/25"
+	document.getElementById("counter").innerHTML = contador + "/30"
 	
-	if(cambiar_img==1){
-	
-		cambiar_img=0;
-	
-		cambiar=0;
-	
-	} else if(cambiar_img==2){
-	
-		cambiar_img=1;
-	
-		cambiar=1;
-	
-	}else if(cambiar_img==3){
-	
-		cambiar_img =2;
+	if(cambiar_img>0){
 
-		cambiar=2;
-	
-	}else if(cambiar_img==4){
-
-		cambiar_img=3;
-
-		cambiar=3;
-	}else if(cambiar_img==5){
-		cambiar_img=4;
-
-		cambiar=4;
-	}else if(cambiar_img==6){
-		cambiar_img=5;
-
-		cambiar=5;
-	}
-	else if(cambiar_img==7){
-		cambiar_img=6;
-
-		cambiar=6;
-	}else if(cambiar_img==8){
-		cambiar_img=7;
-
-		cambiar=7;
-	}else if(cambiar_img==9){
-		cambiar_img=8;
-
-		cambiar=8;
-	}else if(cambiar_img==10){
-		cambiar_img=9;
-
-		cambiar=9;
-	}else if(cambiar_img==11){
-		cambiar_img=10;
-
-		cambiar=10;
-	}else if(cambiar_img==12){
-		cambiar_img=11;
-
-		cambiar=11;
-	}else if(cambiar_img==13){
-		cambiar_img=12;
-
-		cambiar=12;
-	}else if(cambiar_img==14){
-		cambiar_img=13;
-
-		cambiar=13;
-	}else if(cambiar_img==15){
-		cambiar_img=14;
-
-		cambiar=14;
-
-	}else if(cambiar_img==16){
-		cambiar_img=15;
-
-		cambiar=15;
-	}else if(cambiar_img==17){
-		cambiar_img=16;
-
-		cambiar=16;
-	}else if(cambiar_img==18){
-		cambiar_img=17;
-
-		cambiar=17;
-	}else if(cambiar_img==19){
-		cambiar_img=18;
-
-		cambiar=18;
-	}else if(cambiar_img==20){
-		cambiar_img=19;
-
-		cambiar=19;
-	}else if(cambiar_img==21){
-		cambiar_img=20;
-
-		cambiar=20;
-	}else if(cambiar_img==22){
-		cambiar_img=21;
-
-		cambiar=21;
-	}else if(cambiar_img==23){
-		cambiar_img=22;
-
-		cambiar=22;
-	}else if(cambiar_img==24){
-		cambiar_img=23;
-
-		cambiar=23;
+		cambiar_img--;
+		cambiar=cambiar_img
 	}
 }
 
@@ -1848,7 +1890,7 @@ function comprar(){
 
 		}
 
-		if(comprar_pac==0 && cambiar_img==7){
+		if(comprar_pac==0 && cambiar_img==11){
 			
 			comprar_pac = 1;
 
@@ -1866,7 +1908,7 @@ function comprar(){
 
 		}
 
-		if(comprar_rubik==0 && cambiar_img==14){
+		if(comprar_rubik==0 && cambiar_img==18){
 
 			comprar_rubik = 1;
 
@@ -1884,7 +1926,7 @@ function comprar(){
 
 		}
 
-		if(comprar_mexico==0 && cambiar_img==16){
+		if(comprar_mexico==0 && cambiar_img==20){
 			
 			comprar_mexico = 1;
 
@@ -1902,7 +1944,7 @@ function comprar(){
 
 		}
 
-		if(comprar_russia==0 && cambiar_img==17){
+		if(comprar_russia==0 && cambiar_img==21){
 			
 			comprar_russia = 1;
 
@@ -1920,7 +1962,7 @@ function comprar(){
 
 		}
 
-		if(comprar_alemania==0 && cambiar_img==18){
+		if(comprar_alemania==0 && cambiar_img==22){
 			
 			comprar_alemania = 1;
 
@@ -1938,7 +1980,7 @@ function comprar(){
 
 		}
 
-		if(comprar_brasil==0 && cambiar_img==19){
+		if(comprar_brasil==0 && cambiar_img==23){
 			
 			comprar_brasil = 1;
 
@@ -1956,7 +1998,7 @@ function comprar(){
 
 		}
 
-		if(comprar_portugal==0 && cambiar_img==20){
+		if(comprar_portugal==0 && cambiar_img==24){
 			
 			comprar_portugal = 1;
 
@@ -1974,7 +2016,7 @@ function comprar(){
 
 		}
 
-		if(comprar_godzilla==0 && cambiar_img==15){
+		if(comprar_godzilla==0 && cambiar_img==19){
 
 			window.open("https://www.youtube.com/watch?v=_gJPmC5rOa4","_blank")
 
@@ -1991,7 +2033,7 @@ function comprar(){
 
 		}
 
-		if(comprar_españa==0 && cambiar_img==21){
+		if(comprar_españa==0 && cambiar_img==25){
 
 			comprar_españa = 1;
 
@@ -2010,7 +2052,7 @@ function comprar(){
 
 		}
 
-		if(comprar_argentina==0 && cambiar_img==22){
+		if(comprar_argentina==0 && cambiar_img==26){
 
 			comprar_argentina = 1;
 
@@ -2029,7 +2071,7 @@ function comprar(){
 
 		}
 
-		if(comprar_inglaterra==0 && cambiar_img==23){
+		if(comprar_inglaterra==0 && cambiar_img==27){
 
 			comprar_inglaterra = 1;
 
@@ -2048,7 +2090,7 @@ function comprar(){
 
 		}
 
-		if(comprar_francia==0 && cambiar_img==24){
+		if(comprar_francia==0 && cambiar_img==28){
 
 			comprar_francia = 1;
 
@@ -2067,7 +2109,7 @@ function comprar(){
 
 		}
 
-		if(comprar_wefere==0 && cambiar_img==13){
+		if(comprar_wefere==0 && cambiar_img==17){
 
 
 			comprar_wefere = 1;
@@ -2086,7 +2128,7 @@ function comprar(){
 
 
 		}
-		if(comprar_aim==0 && cambiar_img==11){
+		if(comprar_aim==0 && cambiar_img==15){
 
 			comprar_aim = 1;
 
@@ -2124,7 +2166,7 @@ function comprar(){
 
 		}
 
-		if(comprar_angry==0 && cambiar_img==10){
+		if(comprar_angry==0 && cambiar_img==14){
 
 			comprar_angry = 1;
 
@@ -2143,7 +2185,7 @@ function comprar(){
 
 		}
 
-		if(comprar_illuminati==0 && cambiar_img==9){
+		if(comprar_illuminati==0 && cambiar_img==13){
 
 			comprar_illuminati = 1;
 
@@ -2162,7 +2204,7 @@ function comprar(){
 
 		}
 
-		if(comprar_avion==0 && cambiar_img==8){
+		if(comprar_avion==0 && cambiar_img==12){
 
 			comprar_avion = 1;
 
@@ -2180,7 +2222,7 @@ function comprar(){
 
 
 		}
-		if(comprar_prohibido==0 && cambiar_img==6){
+		if(comprar_prohibido==0 && cambiar_img==10){
 
 			comprar_prohibido = 1;
 
@@ -2256,11 +2298,106 @@ function comprar(){
 
 		}
 
-		if(comprar_tierra==0 && cambiar_img==12){
+		if(comprar_tierra==0 && cambiar_img==16){
 
 			comprar_tierra = 1;
 
 			localStorage.setItem("tierra", comprar_tierra);
+
+			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
+
+			localStorage.setItem("coins", coins)
+
+			localStorage.setItem('img', cambiar);
+
+			localStorage.setItem('img_grande', cambiar_img);
+
+			localStorage.setItem('color', color);
+
+
+		}
+
+		if(comprar_canada==0 && cambiar_img==29){
+
+			comprar_canada = 1;
+
+			localStorage.setItem("canada", comprar_canada);
+
+			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
+
+			localStorage.setItem("coins", coins)
+
+			localStorage.setItem('img', cambiar);
+
+			localStorage.setItem('img_grande', cambiar_img);
+
+			localStorage.setItem('color', color);
+
+
+		}
+
+		if(comprar_cookie==0 && cambiar_img==6){
+
+			comprar_cookie = 1;
+
+			localStorage.setItem("cookie", comprar_cookie);
+
+			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
+
+			localStorage.setItem("coins", coins)
+
+			localStorage.setItem('img', cambiar);
+
+			localStorage.setItem('img_grande', cambiar_img);
+
+			localStorage.setItem('color', color);
+
+
+		}
+
+		if(comprar_ace==0 && cambiar_img==7){
+
+			comprar_ace = 1;
+
+			localStorage.setItem("ace", comprar_ace);
+
+			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
+
+			localStorage.setItem("coins", coins)
+
+			localStorage.setItem('img', cambiar);
+
+			localStorage.setItem('img_grande', cambiar_img);
+
+			localStorage.setItem('color', color);
+
+
+		}
+
+		if(comprar_pencil==0 && cambiar_img==8){
+
+			comprar_pencil = 1;
+
+			localStorage.setItem("pencil", comprar_pencil);
+
+			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
+
+			localStorage.setItem("coins", coins)
+
+			localStorage.setItem('img', cambiar);
+
+			localStorage.setItem('img_grande', cambiar_img);
+
+			localStorage.setItem('color', color);
+
+
+		}
+
+		if(comprar_sword==0 && cambiar_img==9){
+
+			comprar_sword = 1;
+
+			localStorage.setItem("sword", comprar_sword);
 
 			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
 
@@ -2386,6 +2523,6 @@ function back(){
 }
 
 function borrar(){
-	console.log("asdadasd")
+	
 	localStorage.clear();
 }

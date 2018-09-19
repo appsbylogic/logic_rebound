@@ -305,7 +305,7 @@ window.addEventListener('mousemove', function(event){
 
 window.addEventListener('mousedown', function(event){
 
-	console.log(event)
+	
 
 	if(menu_perder==1 || poner_menu===true){
 
@@ -350,55 +350,55 @@ if(localStorage.getItem('img')){
 	
 		prueba_in = document.getElementById("prueba_in_game")
 	
-	}else if(cambiar==7){
+	}else if(cambiar==11){
 	
 		prueba_in = document.getElementById("pacman_in_game")
 	
-	}else if(cambiar==14){
+	}else if(cambiar==18){
 
 		prueba_in = document.getElementById("rubik_in_game")
 
 
 
-	}else if(cambiar==15){
+	}else if(cambiar==19){
 	
 		prueba_in = document.getElementById("godzilla_in_game")
 	
-	}else if(cambiar==16){
+	}else if(cambiar==20){
 
 		prueba_in = document.getElementById("mexico_in_game")
-	}else if(cambiar==17){
+	}else if(cambiar==21){
 
 		prueba_in = document.getElementById("russia_in_game")
-	}else if(cambiar==18){
+	}else if(cambiar==22){
 	
 		prueba_in = document.getElementById("alemania_in_game")
 	
-	}else if(cambiar==19){
+	}else if(cambiar==23){
 	
 		prueba_in = document.getElementById("brasil_in_game")
 	
-	}else if(cambiar==20){
+	}else if(cambiar==24){
 	
 		prueba_in = document.getElementById("portugal_in_game")
 	
-	}else if(cambiar==21){
+	}else if(cambiar==25){
 	
 		prueba_in = document.getElementById("españa_in_game")
 	
-	}else if(cambiar==22){
+	}else if(cambiar==26){
 	
 		prueba_in = document.getElementById("argentina_in_game")
 	
-	}else if(cambiar==23){
+	}else if(cambiar==27){
 	
 		prueba_in = document.getElementById("inglaterra_in_game")
 	
-	}else if(cambiar==24){
+	}else if(cambiar==28){
 	
 		prueba_in = document.getElementById("francia_in_game")
 	
-	}else if(cambiar==13){
+	}else if(cambiar==17){
 	
 		prueba_in = document.getElementById("wefere_in_game")
 
@@ -420,30 +420,56 @@ if(localStorage.getItem('img')){
 	
 		prueba_in = document.getElementById("music_in_game")
 	
-	}else if(cambiar==6){
+	}else if(cambiar==10){
 	
 		prueba_in = document.getElementById("prohibido_in_game")
 	
-	}else if(cambiar==8){
+	}else if(cambiar==12){
 	
 		prueba_in = document.getElementById("avion_in_game")
 	
-	}else if(cambiar==9){
+	}else if(cambiar==13){
 	
 		prueba_in = document.getElementById("illuminati_in_game")
 	
-	}else if(cambiar==10){
+	}else if(cambiar==14){
 	
 		prueba_in = document.getElementById("angry_in_game")
 	
-	}else if(cambiar==11){
+	}else if(cambiar==15){
 	
 		prueba_in = document.getElementById("aim_in_game")
 	
 	}
-	else if(cambiar==12){
+	else if(cambiar==16){
 	
 		prueba_in = document.getElementById("tierra_in_game")
+	
+	}
+	else if(cambiar==29){
+	
+		prueba_in = document.getElementById("canada_in_game")
+	
+	}
+
+	else if(cambiar==6){
+	
+		prueba_in = document.getElementById("cookie_in_game")
+	
+	}
+	else if(cambiar==7){
+	
+		prueba_in = document.getElementById("ace_in_game")
+	
+	}
+	else if(cambiar==8){
+	
+		prueba_in = document.getElementById("pencil_in_game")
+	
+	}
+	else if(cambiar==9){
+	
+		prueba_in = document.getElementById("sword_in_game")
 	
 	}
 
@@ -482,9 +508,7 @@ this.draw =	function(){
 
     c.fillStyle = "white";
 
-    c.shadowColor = color;
-
-    c.shadowBlur = blur;
+   
 
     if(cambiar==13 || cambiar==14){
 	
@@ -545,6 +569,12 @@ this.draw =	function(){
 
 	}
 }
+	
+	c.shadowColor = color;
+
+	c.shadowBlur = blur;
+
+
 
     
 	c.drawImage(prueba_in,this.x,this.y);
@@ -564,34 +594,6 @@ this.update = function(){
 	velocidad = true;
 
 
-	
-
-			if(lentitud){
-
-			if(this.velx>0){
-
-				this.velx=5;	
-
-			}
-
-			if(this.velx<0){
-
-				this.velx=-5;	
-
-			}
-
-			if(this.vely>0){
-
-				this.vely=5;	
-
-			}
-
-			if(this.vely<0){
-
-				this.vely=-5;	
-
-			}}
-
 
 
 //--------------------------REBOTE--------------------------------
@@ -602,13 +604,25 @@ var audio_lose = document.getElementById("audio_lose");
 var audio_score = document.getElementById("audio_score");
 
 
-	if(this.x<0 || this.x+20 > canvas_width || this.x>canvas_width){
+	if(this.x<0){
 
-		
+		this.x=0;
 
-		
+
 		
 		this.velx = -this.velx;
+
+	}
+
+	if(this.x+20 > canvas_width){
+
+		this.x=canvas_width-20;
+
+		
+			
+		
+		this.velx = -this.velx;
+
 
 	}
 
@@ -616,6 +630,7 @@ var audio_score = document.getElementById("audio_score");
 
 		
 
+			
 
 		
 		this.vely = -this.vely;
@@ -630,6 +645,7 @@ var audio_score = document.getElementById("audio_score");
     			autoShow: true
   			});*/
 
+			
   			
 			audio_lose.play();
 
@@ -705,7 +721,7 @@ var audio_score = document.getElementById("audio_score");
 
            localStorage.setItem("coins", coins)
 
-           console.log(localStorage.getItem("coins"))
+           
 
 
            
@@ -729,10 +745,15 @@ var audio_score = document.getElementById("audio_score");
 
 	}
 
-	if(this.x >= mouse.x && this.x<= mouse.x+(r_width) && this.y+17 >= y_r){
+	
+	if(this.x >= mouse.x-20 && this.x<= mouse.x+(r_width) && this.y+20 >= y_r){
 		
 
 			audio_score.play();
+
+			
+
+
 
 		this.vely=-this.vely;
 		
@@ -799,8 +820,14 @@ var audio_score = document.getElementById("audio_score");
 			}
 		}
 
+		
+
+
+
 
 		if(this.x >= mouse.x && this.x<= mouse.x+(r_width)){
+
+			
 			
             ball_over_r =1;
 
@@ -897,6 +924,8 @@ var audio_score = document.getElementById("audio_score");
 
 			lentitud=true;
 
+			lentitud_disminuir();
+
 			
 		}
 		if(poder==2){
@@ -916,9 +945,23 @@ var audio_score = document.getElementById("audio_score");
 
 			
 		}
+
+		if(poder==4){
+
+			this.velx=-this.velx;
+
+			if(this.vely<0){
+
+				this.vely= -this.vely;
+			}
+
+			
+
+			
+		}
 	}
 
-	
+
 	
 
 	this.x+=this.velx;
@@ -934,7 +977,7 @@ var audio_score = document.getElementById("audio_score");
 
 function velocidad_aumentar(){
 
-	console.log('asasd')
+	
 
 
 		if(velocidad){
@@ -966,6 +1009,65 @@ function velocidad_aumentar(){
 
 }
 
+function lentitud_disminuir(){
+
+	
+
+
+		if(lentitud){
+			
+            if(ball.velx>0 && ball.velx<=5){
+
+            	ball.velx=3;
+			
+            }
+			
+            if(ball.velx<0 && ball.velx>=-5){
+
+            	ball.velx=-3;
+				
+            }
+
+            if(ball.velx>0 && ball.velx>5){
+
+            	ball.velx=5;
+			
+            }
+			
+            if(ball.velx<0 && ball.velx<=-5){
+
+            	ball.velx=-5
+				
+            }
+			
+             if(ball.vely>0 && ball.vely<=5){
+
+            	ball.vely=3;
+			
+            }
+			
+            if(ball.vely<0 && ball.vely>=-5){
+
+            	ball.vely=-3;
+				
+            }
+
+            if(ball.vely>0 && ball.vely>5){
+
+            	ball.vely=5;
+			
+            }
+			
+            if(ball.vely<0 && ball.vely<=-5){
+
+            	ball.vely=-5
+				
+            }
+
+        }
+
+}
+
 var bola2_x = 30;
  var bola2_y = 10;
 var bola2_velx = 5;
@@ -989,10 +1091,7 @@ function bola2(){
 
     c.fillStyle = "white";
 
-    c.shadowColor = color;
-
-    c.shadowBlur = blur;
-
+  
 	c.drawImage(prueba_in,bola2_x,bola2_y);
 
 	c.restore();
@@ -1118,7 +1217,7 @@ function bola2(){
 
             localStorage.setItem("coins", coins)
 
-           console.log(localStorage.getItem("coins"))
+       
 
 
 
@@ -1220,7 +1319,7 @@ function doSetTimeout_3(){
 
 				visible = true;
 
-				poder = Math.floor(Math.random()*4);
+				poder = 1;
 
 				power_posicion = Math.floor(Math.random()*1)
 
@@ -1249,6 +1348,7 @@ function doSetTimeout_4(){
 
 function quitar(){
 
+	
 		if(aparecer){
 		
             aparecer=false;
@@ -1263,28 +1363,6 @@ function quitar(){
 
 			velocidad=false
 			
-			if(ball.velx>0){
-
-				ball.velx=5;	
-			
-            }
-			
-            if(ball.velx<0){
-			
-            	ball.velx=-5;	
-			
-            }
-			
-            if(ball.vely>0){
-			
-            	ball.vely=5;	
-			}
-			
-            if(ball.vely<0){
-			
-            	ball.vely=-5;	
-			
-            }
 			
 		}
             if(lentitud){
@@ -1458,6 +1536,16 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 		
         }
 
+        if(poder==4){
+		
+        	var reverse_imagen = document.getElementById('reverse');
+		
+        	
+		
+        	c.drawImage(reverse_imagen,power_x,power_y)
+		
+        }
+
 		cerrar = true;
 		
         c.closePath();
@@ -1597,7 +1685,7 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 
 				document.getElementById("score").innerHTML = score;
 
-				document.getElementById("pausa").setAttribute("style", "visibility:hidden")
+				document.getElementById("pausa").setAttribute("style", "visibility: hidden")
 
 		
 
@@ -1629,9 +1717,11 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 
                 coins_partida=0;
 
-                document.getElementById("coins_gotten").setAttribute("style", "visibility:hidden")
+                document.getElementById('pausa').setAttribute("style", 'visibility:visible')
 
-				document.getElementById("coins_img_gotten").setAttribute("style", "visibility:hidden")
+                document.getElementById("coins_gotten").setAttribute("style", "visibility: hidden")
+
+				document.getElementById("coins_img_gotten").setAttribute("style", "visibility: hidden")
             
                 menu_perder=0;
                 
@@ -1660,7 +1750,7 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 
                     boton_pausa.height=0;
 
-                    document.getElementById("score").setAttribute("style", "visibility:hidden")
+                    document.getElementById("score").setAttribute("style", "visibility: hidden")
 
                     cancelAnimationFrame(animation_frame);
 
@@ -1686,17 +1776,17 @@ animar();
 function borrar(){
 
 	coins_partida=0;
-	 document.getElementById("juego").setAttribute("style", "visibility:hidden")
+	 document.getElementById("juego").setAttribute("style", "visibility: hidden")
 
-	 document.getElementById("score").setAttribute("style", "visibility:hidden")
+	 document.getElementById("score").setAttribute("style", "visibility: hidden")
 	
-	document.getElementById("coins_gotten").setAttribute("style", "visibility:hidden")
+	document.getElementById("coins_gotten").setAttribute("style", "visibility: hidden")
 
-	document.getElementById("coins_img_gotten").setAttribute("style", "visibility:hidden")
+	document.getElementById("coins_img_gotten").setAttribute("style", "visibility: hidden")
 
-	document.getElementById("coin_img").setAttribute("style", "visibility: visible");
+	document.getElementById("coin_img").setAttribute("style", "visibility:visible");
 
-	document.getElementById("coin").setAttribute("style", "visibility: visible");
+	document.getElementById("coin").setAttribute("style", "visibility:visible");
 	
 	c.beginPath();
 	

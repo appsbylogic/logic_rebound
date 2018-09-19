@@ -1,6 +1,16 @@
-@media(min-width: 900px){
+@media(min-width: 800px){
 
-	
+	#web{
+
+		top: 90%;
+
+	}
+
+	#twitter{
+
+		top: 85%;
+
+	}	
 	#high{
 
 
@@ -100,6 +110,27 @@
 
 		height: auto;
 	}
+
+
+}
+
+@media(min-height: 1000px){
+
+	#canvas_edit{
+
+		top: 5%;
+
+
+	}
+
+
+
+}
+
+
+@media(min-height: 850px){
+
+	
 
 
 }
