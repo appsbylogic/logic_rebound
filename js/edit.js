@@ -36,6 +36,7 @@ var comprar_ace = 0;
 var comprar_cookie=0;
 var comprar_sword = 0;
 var comprar_pencil=0;
+var comprar_novum=0;
 
 var contador=1;
 
@@ -170,6 +171,11 @@ function abrir_editar(){
 		comprar_aim=localStorage.getItem("aim")
 	}
 
+	if(localStorage.getItem("novum")){
+
+		comprar_novum=localStorage.getItem("novum")
+	}
+
 	if(localStorage.getItem('img')){
 		cambiar = localStorage.getItem('img')
 	}else{
@@ -237,6 +243,8 @@ function abrir_editar(){
 	page.setAttribute("style", "visibility: hidden");
 
 	interval = setInterval(function(){
+
+		console.log(cambiar)
 
 
 document.getElementById("coin").setAttribute("style", "visibility: visible");
@@ -1736,9 +1744,54 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: hidden")
+			document.getElementById("derecha").setAttribute("style", "visibility: visible")
 
 			if(localStorage.getItem("canada") == 1){
+
+
+				precio.setAttribute("style", "visibility:hidden")
+
+				precio_img.setAttribute("style", "visibility:hidden")
+
+				imagen_boton=1;
+
+				boton_compar.src = "img/select.png"
+
+			}else{
+
+				precio.setAttribute("style", "visibility:visible")
+
+				precio_img.setAttribute("style", "visibility:visible")
+
+				boton_compar.src = "img/buy.png"
+
+				imagen_boton=0;
+
+			}
+		}else if(cambiar_img==30){
+
+			boton_compar.setAttribute("style", "visibility: visible")
+
+			default_img = document.getElementById("novum")
+
+			color = "#9fff89";
+
+
+			precio.innerHTML = "0";
+
+
+			select.innerHTML = "Novum"
+			
+
+			precio.setAttribute("style", "visibility:visible")
+
+			precio_img.setAttribute("style", "visibility:visible")
+
+			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+
+			document.getElementById("derecha").setAttribute("style", "visibility: hidden")
+
+			if(localStorage.getItem("novum") == 1){
 
 
 				precio.setAttribute("style", "visibility:hidden")
@@ -1811,9 +1864,9 @@ function cambiar_skin_derecha(){
 
 	contador+=1
 
-	document.getElementById("counter").innerHTML = contador + "/30"
+	document.getElementById("counter").innerHTML = contador + "/31"
 
-	if(cambiar_img<30){
+	if(cambiar_img<31){
 		cambiar_img++;
 		cambiar=cambiar_img
 
@@ -1832,7 +1885,7 @@ function cambiar_skin_izquierda(){
 
 	contador-=1
 
-	document.getElementById("counter").innerHTML = contador + "/30"
+	document.getElementById("counter").innerHTML = contador + "/31"
 	
 	if(cambiar_img>0){
 
@@ -2398,6 +2451,25 @@ function comprar(){
 			comprar_sword = 1;
 
 			localStorage.setItem("sword", comprar_sword);
+
+			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
+
+			localStorage.setItem("coins", coins)
+
+			localStorage.setItem('img', cambiar);
+
+			localStorage.setItem('img_grande', cambiar_img);
+
+			localStorage.setItem('color', color);
+
+
+		}
+
+		if(comprar_novum==0 && cambiar_img==30){
+
+			comprar_novum = 1;
+
+			localStorage.setItem("novum", comprar_novum);
 
 			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
 

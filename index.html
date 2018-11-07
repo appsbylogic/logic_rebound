@@ -17,6 +17,8 @@
         
 		<title>menu</title>
 
+		<script src="https://connect.facebook.net/en_US/fbinstant.6.0.js"></script>
+
        	
 		<script type="text/javascript" src="js/game.js"></script>
 
@@ -82,12 +84,7 @@
     	<div id="menu">
         
 		<a href="image_credits.html" id="credits" onclick="
-			/*AdMob.prepareInterstitial({
-   			adId: admobid.interstitial,
-    
-    		autoShow: true
-
-  			});*/">Credits</a>
+			//admob.interstitial.show()">Credits</a>
 
   		<img src="img/twitter.png" id="twitter" onclick="window.open('https://twitter.com/Maldonado6F','_blank')">
 
@@ -145,6 +142,8 @@
 		<img id="sword_in_game" src="img/balls/in game/sword.png" style="visibility:hidden">
 		<img id="pencil_in_game" src="img/balls/in game/pencil.png" style="visibility:hidden">
 		<img id="cookie_in_game" src="img/balls/in game/cookie.png" style="visibility:hidden">
+		<img id="novum_in_game" src="img/balls/in game/novum.png" style="visibility:hidden">
+
 
 		<audio autoplay loop id="audio">
     	
@@ -212,6 +211,7 @@
 			<img id="sword" src="img/balls/sword.png" style="visibility:hidden">
 			<img id="pencil" src="img/balls/pencil.png" style="visibility:hidden">
 			<img id="cookie" src="img/balls/cookie.png" style="visibility:hidden">
+			<img id="novum" src="img/balls/novum.png" style="visibility:hidden">
 
 			<canvas id="canvas_edit" ></canvas>
 			<img id="izquierda" src="img/izquierda.png" onclick="cambiar_skin_izquierda();">
@@ -242,9 +242,8 @@
 
 	
 
-	<script type="text/javascript" src="cordova.js"></script>
-    
-    <script type="text/javascript" src="js/script.js" ></script>
+
+
 
     
 

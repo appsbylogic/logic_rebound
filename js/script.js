@@ -1,35 +1,51 @@
-var admobid = {};
-
-// TODO: replace the following ad units with your own
-if( /(android)/i.test(navigator.userAgent) ) {
-  admobid = { // for Android
+var admobid = {}
+if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
+  admobid = {
     banner: 'ca-app-pub-4382391968703736/6172680439',
     interstitial: 'ca-app-pub-4382391968703736/1411771367',
-  };
-} 
-
-function initApp() {
-
-  if (! AdMob ) { alert( 'admob plugin not ready' ); return; }
-
-  // this will create a banner on startup
-  AdMob.createBanner( {
-    adId: admobid.banner,
-    position: AdMob.AD_POSITION.BOTTOM_CENTER,
-    isTesting: false, // TODO: remove this line when release
-    overlap: false,
-    offsetTopBar: false,
-    bgColor: 'black',
-    autoShow: true
-  } );
-
-  var page = document.getElementById("page")
-  page.classList.remove("visible")
-
+  }
+} else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {  // for ios
+  admobid = {
+    banner: 'ca-app-pub-4382391968703736/6172680439',
+    interstitial: 'ca-app-pub-4382391968703736/1411771367',
+  }
 }
 
-if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
-    document.addEventListener('deviceready', initApp, false);
-} else {
-    initApp();
-}
+document.addEventListener('deviceready', function() {
+  admob.banner.config({
+    id: admobid.banner,
+    isTesting: false,
+    autoShow: true,
+  })
+  admob.banner.prepare()
+
+  admob.interstitial.config({
+    id: admobid.interstitial,
+    isTesting: false,
+    autoShow: false,
+  })
+  admob.interstitial.prepare()
+
+   
+  
+
+}, false)
+
+document.addEventListener('admob.banner.events.LOAD_FAIL', function(event) {
+  console.log(event)
+})
+
+document.addEventListener('admob.interstitial.events.LOAD_FAIL', function(event) {
+  console.log(event)
+})
+
+document.addEventListener('admob.interstitial.events.LOAD', function(event) {
+  console.log(event)
+  document.getElementById('showAd').disabled = false
+})
+
+document.addEventListener('admob.interstitial.events.CLOSE', function(event) {
+  console.log(event)
+
+  admob.interstitial.prepare()
+})

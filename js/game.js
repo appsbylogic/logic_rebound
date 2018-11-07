@@ -1,5 +1,4 @@
-
-
+var playerID;
 var s;
 
 var juego_activo;
@@ -329,6 +328,8 @@ window.addEventListener('resize', function(event){
 
 })
 
+
+
 if(localStorage.getItem('img')){
 		cambiar = localStorage.getItem('img')
 	}else{
@@ -472,6 +473,11 @@ if(localStorage.getItem('img')){
 		prueba_in = document.getElementById("sword_in_game")
 	
 	}
+	else if(cambiar==30){
+	
+		prueba_in = document.getElementById("novum_in_game")
+	
+	}
 
 
 //-----------------------------------PELOTA------------------------------------------------
@@ -510,7 +516,7 @@ this.draw =	function(){
 
    
 
-    if(cambiar==13 || cambiar==14){
+    if(cambiar==17 || cambiar==18){
 	
 
 		color = "rgb("+r+", "+g+", "+b+")";
@@ -574,7 +580,7 @@ this.draw =	function(){
 
 	c.shadowBlur = blur;
 
-
+	console.log(cambiar);
 
     
 	c.drawImage(prueba_in,this.x,this.y);
@@ -721,7 +727,7 @@ var audio_score = document.getElementById("audio_score");
 
            localStorage.setItem("coins", coins)
 
-           
+            
 
 
            
@@ -733,7 +739,7 @@ var audio_score = document.getElementById("audio_score");
 
 			 menu_perder = 1;
 
-			 
+			 //admob.interstitial.show()
 
 			 if(localStorage.getItem("coins")){
 
@@ -1163,6 +1169,8 @@ function bola2(){
 
 			close_m = 0;
 
+			//admob.interstitial.show()
+
 			
 
 			 if(score>=1 && score<= 5){
@@ -1319,7 +1327,7 @@ function doSetTimeout_3(){
 
 				visible = true;
 
-				poder = 1;
+				poder = Math.floor(Math.random()*4);
 
 				power_posicion = Math.floor(Math.random()*1)
 
