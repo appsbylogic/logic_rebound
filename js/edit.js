@@ -244,8 +244,7 @@ function abrir_editar(){
 
 	interval = setInterval(function(){
 
-		console.log(cambiar)
-
+	
 
 document.getElementById("coin").setAttribute("style", "visibility: visible");
 
