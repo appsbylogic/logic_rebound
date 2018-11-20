@@ -198,14 +198,14 @@ function abrir_editar(){
 
 	contador = parseInt(localStorage.getItem('img_grande'))+1
 
-	document.getElementById("counter").innerHTML = contador + "/30"
+	document.getElementById("counter").innerHTML = contador + "/31"
 
 	
 		}else{
 			cambiar_img =0
 			contador=1;
 
-	document.getElementById("counter").innerHTML = contador + "/30"
+	document.getElementById("counter").innerHTML = contador + "/31"
 		}
 	if(localStorage.getItem('shadow')){
 		blur = localStorage.getItem('shadow')
@@ -2467,6 +2467,8 @@ function comprar(){
 
 		if(comprar_novum==0 && cambiar_img==30){
 
+			window.open("https://novummx.github.io/","_blank")
+
 			comprar_novum = 1;
 
 			localStorage.setItem("novum", comprar_novum);
@@ -2550,6 +2552,8 @@ function quitar_musica(){
 }
 
 function quitar_sonido(){
+
+	localStorage.clear();
 
 	var audio_lose = document.getElementById("audio_lose");
 
