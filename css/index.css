@@ -4,6 +4,8 @@ html,body {
 
 	font-family: pixel_digivolveregular;
 
+	background-color: #202020;
+
 	margin: 0px;
 		
 	overflow: hidden;
@@ -21,27 +23,7 @@ html,body {
 }
 
 
-#background-image{
 
-	width: 100%;
-  				
-  	top: 0;
- 				
- 	left: 0;
- 				
- 	bottom: -80px;
-  				
-  	position: fixed;
- 				
- 	z-index: -1;
-  				
-  	background: url("../img/fondo.png") no-repeat center center;
-  				
-  	background-size: cover;
-  				
-  	transform: translate3d(0,0,0);
-
-}
 
 
 #h1 {
@@ -108,7 +90,7 @@ margin-top: 0%;
 	padding-left: 15px;
 
 	margin-left: 4%;
-	visibility: hidden;
+	display:none;
 
 	font-size: 5vw;
 
@@ -126,7 +108,7 @@ margin-top: 0%;
 
 #coins_img_gotten {
 
-	visibility: hidden;
+	display:none;
 
 	position: fixed;
 
@@ -308,7 +290,7 @@ margin-top: 0%;
 
 		position: fixed;
 
-		visibility: hidden;
+		display:none;
 	}
 
 	#izquierda{
@@ -325,7 +307,7 @@ margin-top: 0%;
     	
     	transform: translate(-10%, -45%);
 
-    	visibility: hidden;
+    	display:none;
 
     	cursor: pointer;
 
@@ -345,7 +327,7 @@ margin-top: 0%;
     	
     	transform: translate(-90%, -45%);	
 
-    	visibility: hidden;
+    	display:none;
 
     	cursor: pointer;
 
@@ -397,6 +379,8 @@ margin-top: 0%;
 	#coin_img{
 		position: fixed;
 
+
+
 		color: white;
 
 		width: 5%;
@@ -413,6 +397,33 @@ margin-top: 0%;
 	}
 
 	#coin{
+
+		display: initial;
+
+		position: fixed;
+
+		color: rgb(255, 255, 255);
+
+		font-size: 4vw;
+
+		text-align: center;
+
+		margin-top: 0px;
+
+		margin-left: 2%;
+
+		top: 1%;
+
+		left: 50%;
+
+		transform: translate(-50%,-1%);
+
+
+	}
+
+	#coin_m{
+
+		display: initial;
 
 		position: fixed;
 
@@ -446,7 +457,7 @@ margin-top: 0%;
 		width: 25%;
    		height: auto;
 
-   		visibility: hidden;
+   		display:none;
 
 		top: 90%;
 
@@ -473,7 +484,7 @@ margin-top: 0%;
 
 		transform: translate(-40%,-74%);
 
-		visibility: hidden;
+		display:none;
 
 
 
@@ -531,13 +542,13 @@ margin-top: 0%;
 
 		transform: translate(-50%,-74%);
 
-		visibility: hidden;
+		display:none;
 
 	}
 
 	#song{
 
-		visibility: hidden;
+		display:none;
 	}
 
 	#music{
@@ -597,7 +608,7 @@ margin-top: 0%;
 
 	#menu{
 
-		visibility: visible;
+		display:initial;
 	}
 	
 	#juego{
@@ -608,7 +619,7 @@ margin-top: 0%;
 
 		border: 0px;
 
-		visibility: hidden;
+		display:none;
 
 	}
 	

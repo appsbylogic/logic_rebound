@@ -37,6 +37,16 @@ var comprar_cookie=0;
 var comprar_sword = 0;
 var comprar_pencil=0;
 var comprar_novum=0;
+var comprar_pewds=0;
+
+if(localStorage.getItem('coins')){
+document.getElementById('coin_m').innerHTML = localStorage.getItem('coins')
+
+}else{
+	document.getElementById('coin_m').innerHTML = 0
+}
+
+
 
 var contador=1;
 
@@ -55,6 +65,9 @@ var g=0;
 var b=0;
 var tope = 0;
 var imagen_boton = 0;
+
+
+	var boton_compar = document.getElementById("buy")
 function abrir_editar(){
 
 	/*AdMob.prepareInterstitial({
@@ -65,13 +78,16 @@ function abrir_editar(){
   	});*/
 	
 
-	document.getElementById("menu").setAttribute("style", "visibility: hidden")
+	document.getElementById("menu").setAttribute("style", "display:none")
+
+	document.getElementById("coin").setAttribute("style", "display:initial")
+
+	document.getElementById("coin_img").setAttribute("style", "display:initial")
 
 	var precio = document.getElementById("prize_text")
 
 	var precio_img = document.getElementById("prize")
 
-	var boton_compar = document.getElementById("buy")
 
 	if(localStorage.getItem("ying")){
 		comprar_ying=localStorage.getItem("ying")
@@ -171,19 +187,26 @@ function abrir_editar(){
 		comprar_aim=localStorage.getItem("aim")
 	}
 
+	
 	if(localStorage.getItem("novum")){
 
 		comprar_novum=localStorage.getItem("novum")
 	}
+
+	if(localStorage.getItem("pewds")){
+
+		comprar_pewds=localStorage.getItem("pewds")
+	}
+
 
 	if(localStorage.getItem('img')){
 		cambiar = localStorage.getItem('img')
 	}else{
 		cambiar=0;
 
-		precio.setAttribute("style", "visibility:hidden")
+		precio.setAttribute("style", "display:none")
 
-		precio_img.setAttribute("style", "visibility:hidden")
+		precio_img.setAttribute("style", "display:none")
 	}
 
 	if(localStorage.getItem('color')){
@@ -198,14 +221,14 @@ function abrir_editar(){
 
 	contador = parseInt(localStorage.getItem('img_grande'))+1
 
-	document.getElementById("counter").innerHTML = contador + "/31"
+	document.getElementById("counter").innerHTML = contador + "/32"
 
 	
 		}else{
 			cambiar_img =0
 			contador=1;
 
-	document.getElementById("counter").innerHTML = contador + "/31"
+	document.getElementById("counter").innerHTML = contador + "/32"
 		}
 	if(localStorage.getItem('shadow')){
 		blur = localStorage.getItem('shadow')
@@ -227,26 +250,27 @@ function abrir_editar(){
 	canvas.width=width;
 
 
-	document.getElementById("coin_img").setAttribute("style", "visibility: visible");
+	document.getElementById("coin_img").setAttribute("style", "display:initial");
 
-	document.getElementById("coin").setAttribute("style", "visibility: visible");
+	document.getElementById("coin").setAttribute("style", "display:initial");
 	
 	
 	var page = document.getElementById("page");
 	
 	var div_edit = document.getElementById("div_edit");
 	
-	div_edit.setAttribute("style", "visibility: visible")
+	div_edit.setAttribute("style", "display:initial")
 	
 	
 	
-	page.setAttribute("style", "visibility: hidden");
+	page.setAttribute("style", "display:none");
 
 	interval = setInterval(function(){
 
-	
+		
 
-document.getElementById("coin").setAttribute("style", "visibility: visible");
+
+document.getElementById("coin").setAttribute("style", "display:initial");
 
 		if(buy_fail==1){
 document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coin+")";
@@ -299,24 +323,32 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			imagen_boton=1;
 			
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
-			boton_compar.src="img/select.png"
+			if(localStorage.getItem('img') == cambiar){
 
-			precio.setAttribute("style", "visibility:hidden")
+					boton_compar.src = "img/selected.png"
 
-			precio_img.setAttribute("style", "visibility:hidden")
+				}else{
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: hidden")
+					boton_compar.src = "img/select.png"
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+				}
+
+			precio.setAttribute("style", "display:none")
+
+			precio_img.setAttribute("style", "display:none")
+
+			document.getElementById("izquierda").setAttribute("style", "display:none")
+
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 
 		
 		}else if(cambiar_img==5){
 
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 		
 			default_img = document.getElementById("prueba")
 
@@ -328,30 +360,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			precio.innerHTML = 20;
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("ying") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -362,7 +402,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 		}else if(cambiar_img==6){
 
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 		
 			default_img = document.getElementById("cookie")
 
@@ -374,30 +414,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			precio.innerHTML = 20;
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("cookie") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -408,7 +456,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 		}else if(cambiar_img==7){
 
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 		
 			default_img = document.getElementById("ace")
 
@@ -420,30 +468,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			precio.innerHTML = 20;
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("ace") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -454,7 +510,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 		}else if(cambiar_img==8){
 
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 		
 			default_img = document.getElementById("pencil")
 
@@ -466,30 +522,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			precio.innerHTML = 25;
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("pencil") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -500,7 +564,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 		}else if(cambiar_img==9){
 
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 		
 			default_img = document.getElementById("sword")
 
@@ -512,30 +576,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 			precio.innerHTML = 30;
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("sword") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -545,7 +617,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 		
 		}else if(cambiar_img==11){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("pacman")
 
@@ -557,28 +629,36 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 		
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("pac") == 1){
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-			precio_img.setAttribute("style", "visibility:hidden")
+			precio_img.setAttribute("style", "display:none")
 
 			imagen_boton=1;
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -588,7 +668,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==18){	
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("rubik")
 
@@ -600,29 +680,37 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("rubik") == 1){
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -688,7 +776,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==19){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("godzilla")
 
@@ -702,30 +790,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Godzilla"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("godzilla") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/video.png"
 
@@ -735,7 +831,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==20){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("mexico")
 
@@ -746,30 +842,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "México"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("mexico") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -779,7 +883,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==21){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("russia")
 
@@ -793,30 +897,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Russia"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("russia") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -826,7 +938,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==22){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("alemania")
 
@@ -840,30 +952,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Germany"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("alemania") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -873,7 +993,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==23){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("brasil")
 
@@ -887,30 +1007,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Brazil"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("brasil") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -920,7 +1048,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==24){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("portugal")
 
@@ -934,30 +1062,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Portugal"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("portugal") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -967,7 +1103,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==25){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("españa")
 
@@ -980,30 +1116,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Spain"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("españa") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1013,7 +1157,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==26){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("argentina")
 
@@ -1026,30 +1170,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Argentina"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("argentina") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1059,7 +1211,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==27){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("inglaterra")
 
@@ -1072,30 +1224,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "England"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("inglaterra") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1105,7 +1265,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==28){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("francia")
 
@@ -1118,30 +1278,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "France"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("francia") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1151,7 +1319,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==17){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("wefere")
 
@@ -1221,30 +1389,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Wefere"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("wefere") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1254,7 +1430,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==1){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("gear")
 
@@ -1268,30 +1444,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Gear"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("gear") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1301,7 +1485,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==10){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("prohibido")
 
@@ -1315,30 +1499,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Forbidden"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("prohibido") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1348,7 +1540,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==2){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("corazon")
 
@@ -1362,30 +1554,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Heart"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("corazon") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1395,7 +1595,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==15){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("aim")
 
@@ -1409,30 +1609,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Target"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("aim") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1442,7 +1650,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==4){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("music_img")
 
@@ -1456,30 +1664,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Musical Note"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("music") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1489,7 +1705,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==3){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("spinner")
 
@@ -1503,30 +1719,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Spinner"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("spinner") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1536,7 +1760,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==12){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("avion")
 
@@ -1550,30 +1774,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Plane"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("avion") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1583,7 +1815,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==13){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("illuminati")
 
@@ -1597,30 +1829,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Illuminati"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("illuminati") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1630,7 +1870,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==14){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("angry")
 
@@ -1644,30 +1884,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Angry react"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("angry") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1677,7 +1925,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==16){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("tierra")
 
@@ -1691,30 +1939,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Earth"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("tierra") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1724,7 +1980,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 
 		}else if(cambiar_img==29){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("canada")
 
@@ -1737,30 +1993,38 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Canada"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: visible")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("canada") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
 
@@ -1769,7 +2033,7 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			}
 		}else if(cambiar_img==30){
 
-			boton_compar.setAttribute("style", "visibility: visible")
+			boton_compar.setAttribute("style", "display:initial")
 
 			default_img = document.getElementById("novum")
 
@@ -1782,32 +2046,93 @@ document.getElementById("coin").style.color = "rgb("+r_coin+","+g_coin+","+b_coi
 			select.innerHTML = "Novum"
 			
 
-			precio.setAttribute("style", "visibility:visible")
+			precio.setAttribute("style", "display:initial")
 
-			precio_img.setAttribute("style", "visibility:visible")
+			precio_img.setAttribute("style", "display:initial")
 
-			document.getElementById("izquierda").setAttribute("style", "visibility: visible")
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
 
-			document.getElementById("derecha").setAttribute("style", "visibility: hidden")
+			document.getElementById("derecha").setAttribute("style", "display:initial")
 
 			if(localStorage.getItem("novum") == 1){
 
 
-				precio.setAttribute("style", "visibility:hidden")
+				precio.setAttribute("style", "display:none")
 
-				precio_img.setAttribute("style", "visibility:hidden")
+				precio_img.setAttribute("style", "display:none")
 
 				imagen_boton=1;
 
-				boton_compar.src = "img/select.png"
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
 
 			}else{
 
-				precio.setAttribute("style", "visibility:visible")
+				precio.setAttribute("style", "display:initial")
 
-				precio_img.setAttribute("style", "visibility:visible")
+				precio_img.setAttribute("style", "display:initial")
 
 				boton_compar.src = "img/buy.png"
+
+				imagen_boton=0;
+
+			}
+		}else if(cambiar_img==31){
+
+			boton_compar.setAttribute("style", "display:initial")
+
+			default_img = document.getElementById("pewds")
+
+			color = "#F9013F";
+
+
+			precio.innerHTML = "0";
+
+
+			select.innerHTML = "PewDiePie"
+			
+
+			precio.setAttribute("style", "display:initial")
+
+			precio_img.setAttribute("style", "display:initial")
+
+			document.getElementById("izquierda").setAttribute("style", "display:initial")
+
+			document.getElementById("derecha").setAttribute("style", "display:none")
+
+			if(localStorage.getItem("pewds") == 1){
+
+
+				precio.setAttribute("style", "display:none")
+
+				precio_img.setAttribute("style", "display:none")
+
+				imagen_boton=1;
+
+				if(localStorage.getItem('img') == cambiar){
+
+					boton_compar.src = "img/selected.png"
+
+				}else{
+
+					boton_compar.src = "img/select.png"
+
+				}
+
+			}else{
+
+				precio.setAttribute("style", "display:initial")
+
+				precio_img.setAttribute("style", "display:initial")
+
+				boton_compar.src = "img/sub.png"
 
 				imagen_boton=0;
 
@@ -1863,9 +2188,9 @@ function cambiar_skin_derecha(){
 
 	contador+=1
 
-	document.getElementById("counter").innerHTML = contador + "/31"
+	document.getElementById("counter").innerHTML = contador + "/32"
 
-	if(cambiar_img<31){
+	if(cambiar_img<32){
 		cambiar_img++;
 		cambiar=cambiar_img
 
@@ -1884,7 +2209,7 @@ function cambiar_skin_izquierda(){
 
 	contador-=1
 
-	document.getElementById("counter").innerHTML = contador + "/31"
+	document.getElementById("counter").innerHTML = contador + "/32"
 	
 	if(cambiar_img>0){
 
@@ -1911,6 +2236,9 @@ function comprar(){
 		localStorage.setItem('img_grande', cambiar_img);
 
 		localStorage.setItem('color', color);
+		boton_compar.src = "img/selected.png"
+
+		imagen_boton=3;
 
 		audio.play();
 
@@ -2466,11 +2794,30 @@ function comprar(){
 
 		if(comprar_novum==0 && cambiar_img==30){
 
-			window.open("https://novummx.github.io/","_blank")
-
 			comprar_novum = 1;
 
 			localStorage.setItem("novum", comprar_novum);
+
+			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
+
+			localStorage.setItem("coins", coins)
+
+			localStorage.setItem('img', cambiar);
+
+			localStorage.setItem('img_grande', cambiar_img);
+
+			localStorage.setItem('color', color);
+
+
+		}
+
+		if(comprar_pewds==0 && cambiar_img==31){
+
+			comprar_pewds = 1;
+
+			window.open("https://www.youtube.com/user/PewDiePie?sub_confirmation=1")
+
+			localStorage.setItem("pewds", comprar_pewds);
 
 			coins = parseInt(localStorage.getItem("coins")-parseInt(document.getElementById("prize_text").textContent))
 
@@ -2496,11 +2843,13 @@ function comprar(){
 
 	if(localStorage.getItem("coins")){
 
-		document.getElementById("coin").innerHTML = localStorage.getItem("coins")
-	}else{
+				document.getElementById("coin").innerHTML = localStorage.getItem("coins");
 
-		document.getElementById("coin").innerHTML = 0;
-	}
+				document.getElementById("coin_m").innerHTML = localStorage.getItem("coins");
+			}else{
+				document.getElementById("coin").innerHTML = 0;
+				document.getElementById("coin_m").innerHTML = 0
+		}
 }
 
 
@@ -2552,8 +2901,6 @@ function quitar_musica(){
 
 function quitar_sonido(){
 
-	localStorage.clear();
-
 	var audio_lose = document.getElementById("audio_lose");
 
 	var audio_score = document.getElementById("audio_score");
@@ -2584,14 +2931,14 @@ function quitar_sonido(){
 
 function back(){
 	clearInterval(interval);
-	page.setAttribute("style","visibility:visible")
-	div_edit.setAttribute("style", "visibility: hidden")
-	document.getElementById("buy").setAttribute("style", "visibility: hidden")
-	document.getElementById("prize").setAttribute("style", "visibility:hidden")
-	document.getElementById("prize_text").setAttribute("style", "visibility:hidden")
-	document.getElementById("izquierda").setAttribute("style", "visibility: hidden")
-	document.getElementById("derecha").setAttribute("style", "visibility: hidden")
-	document.getElementById("menu").setAttribute("style", "visibility: visible");
+	page.setAttribute("style","display:initial")
+	div_edit.setAttribute("style", "display:none")
+	document.getElementById("buy").setAttribute("style", "display:none")
+	document.getElementById("prize").setAttribute("style", "display:none")
+	document.getElementById("prize_text").setAttribute("style", "display:none")
+	document.getElementById("izquierda").setAttribute("style", "display:none")
+	document.getElementById("derecha").setAttribute("style", "display:none")
+	document.getElementById("menu").setAttribute("style", "display:initial");
 
 	
 	

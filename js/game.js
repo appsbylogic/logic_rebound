@@ -45,16 +45,17 @@ document.addEventListener("visibilitychange", function() {
 function ocultar(){
 	cambiar = localStorage.getItem('img');
 
-	document.getElementById("coin_img").setAttribute("style", "visibility: hidden");
+	document.getElementById("coin_img").setAttribute("style", "display:none");
 
-	document.getElementById("coin").setAttribute("style", "visibility: hidden");
+	document.getElementById("coin").setAttribute("style", "display:none");
 
+	document.getElementById("coin_m").setAttribute("style", "display:none");
 
-	document.getElementById("menu").setAttribute("style", "visibility: hidden");
+	document.getElementById("menu").setAttribute("style", "display:none");
 
-	document.getElementById("pausa").setAttribute("style", "visibility: visible");
+	document.getElementById("pausa").setAttribute("style", "display:initial");
 
-	document.getElementById("juego").setAttribute("style", "visibility: visible");
+	document.getElementById("juego").setAttribute("style", "display:initial");
 	
 	
 
@@ -121,7 +122,9 @@ window.onload = function(){
 	
 }
 
+var canvas = document.getElementById("canvas");
 
+var c = canvas.getContext("2d");
 function startGame(){
 
 document.getElementById("score").innerHTML = "";
@@ -130,10 +133,22 @@ var boton_pausa = document.getElementById("pausa");
 
 var menu_perder = 0;
 
-var canvas = document.getElementById("canvas");
 
-var c = canvas.getContext("2d");
 
+var wallBounce = false;
+
+var audio_bounce = document.getElementById("audioWallBounce");
+
+var speed_sound = document.getElementById("speed");
+var slow_sound = document.getElementById("slow");
+
+var double_sound = document.getElementById("double_sound");
+
+var portal_sound = document.getElementById("portal_sound");
+
+var reverse_sound = document.getElementById("reverse_sound");
+
+var ball_sound = document.getElementById("balls_sound");
 
 var imagen_pausa = document.getElementById("imagen")
 
@@ -158,6 +173,7 @@ var canvas_width = window.innerWidth-10
 var x_r = window.innerWidth/2-75;
 var y_r = window.innerHeight-90;
 var r_width = 150
+var raq = new raqueta(x_r,y_r,r_width,10);
 //------------------SCORE-------------------------------------
 var x_text = window.innerWidth/2-30;
 var score = 0;
@@ -168,6 +184,8 @@ var ball_over_r=0;
 var velx = 5;
 var vely = 5;
 var radio=10;
+var y_b = 10;
+
 var ball = new Ball(x,y,radio,velx,vely);
 
 
@@ -228,6 +246,8 @@ var mouse_resultado;
 
 var usar_mouse = true;
 
+var soundBouncePlay = false;
+
 
 //-----------------------------------MOVIMIENTO MOUSE-------------------------------------------
 
@@ -238,7 +258,7 @@ window.addEventListener("touchmove", function(event){
 
 	usar_mouse = false
 	
-	mouse.x = event.targetTouches[0].pageX-(r_width/2);
+	mouse.x = event.targetTouches[0].pageX;
 
 	touch.push(mouse.x)
 
@@ -272,13 +292,26 @@ window.addEventListener("touchstart",function(event){
 
 },false)
 
+
+
+window.addEventListener('onmousemove', function(event){
+
+	
+
+
+
+
+})
 window.addEventListener('mousemove', function(event){
 
+	movFinal = event;
 	
 
 	usar_mouse = false
 	
-	mouse.x = event.clientX-r_width/2;
+	mouse.x = event.clientX
+
+	mouse.y = event.clientY;
 
 	touch.push(mouse.x)
 
@@ -292,6 +325,8 @@ window.addEventListener('mousemove', function(event){
 
 		x_r = mouse.x;
 
+		y_r =mouse.y
+
 	}else{
 
 		x_r=0;
@@ -301,6 +336,9 @@ window.addEventListener('mousemove', function(event){
 
 
 })
+
+
+
 
 window.addEventListener('mousedown', function(event){
 
@@ -477,6 +515,10 @@ if(localStorage.getItem('img')){
 	
 		prueba_in = document.getElementById("novum_in_game")
 	
+	}else if(cambiar==31){
+	
+		prueba_in = document.getElementById("pewds_in_game")
+	
 	}
 
 
@@ -485,13 +527,24 @@ if(localStorage.getItem('img')){
 var angulo = 0;
 function Ball(x,y,radio,velx,vely){
 
-this.x = x;
+this.x = 100;
 
-this.y = y;
+this.y = 100;
 
 this.velx = velx;
 
 this.vely = vely;
+
+this.velocity = {
+
+	x: velx,
+
+	y: vely
+}
+
+
+
+
 
 this.radio = radio;
 
@@ -580,7 +633,6 @@ this.draw =	function(){
 
 	c.shadowBlur = blur;
 
-	console.log(cambiar);
 
     
 	c.drawImage(prueba_in,this.x,this.y);
@@ -603,7 +655,7 @@ this.update = function(){
 
 
 //--------------------------REBOTE--------------------------------
-var audio_bounce = document.getElementById("audio_bounce");
+var aduio_score = document.getElementById("audio_bounce");
 
 var audio_lose = document.getElementById("audio_lose");
 
@@ -612,48 +664,141 @@ var audio_score = document.getElementById("audio_score");
 
 	if(this.x<0){
 
+		wallBounce = true;
+
+		if(wallBounce){
+
+			audio_bounce.pause();
+			audio_bounce.currentTime = 0;
+			audio_bounce.play();
+			wallBounce = false;
+		}
+
 		this.x=0;
 
 
 		
-		this.velx = -this.velx;
+		this.velocity.x = -this.velocity.x;
 
 	}
 
 	if(this.x+20 > canvas_width){
 
 		this.x=canvas_width-20;
+		wallBounce = true;
 
+		if(wallBounce){
+
+			audio_bounce.pause();
+			audio_bounce.currentTime = 0;
+			audio_bounce.play();
+			wallBounce = false;
+		}
 		
 			
 		
-		this.velx = -this.velx;
+		this.velocity.x = -this.velocity.x;
 
 
 	}
 
 	if(this.y<0 ){
 
-		
+		wallBounce = true;
 
-			
+		if(wallBounce){
 
-		
-		this.vely = -this.vely;
+			audio_bounce.pause();
+			audio_bounce.currentTime = 0;
+			audio_bounce.play();
+			wallBounce = false;
+		}
+
+
+		this.velocity.y = -this.velocity.y;
 
 	}
 
 //--------------------------CONSEGUIR PUNTOS------------------------------
 
-	if(this.y+18 > y_r && ball_over_r==0 ){
-			/*AdMob.prepareInterstitial({
-  	 			adId: admobid.interstitial,
-    			autoShow: true
-  			});*/
+	
+	
 
-			
-  			
-			audio_lose.play();
+	
+
+
+
+
+	if(getDistance_y(ball.y, raq.y) <= 20 && getDistance_y(ball.y, raq.y) > 5 && getDistance_x(ball.x, raq.x) < 20 && getDistance_x(ball.x, raq.x) > -r_width){
+
+		soundBouncePlay = true;
+
+		if(soundBouncePlay){
+
+			audio_score.pause();
+			audio_score.currentTime = 0;
+			audio_score.play();
+			soundBouncePlay = false;
+		}
+
+		
+
+
+		ball.velocity.y = -ball.velocity.y
+
+		if(velocidadMouse.x > 300 && this.velocity.x <0 || velocidadMouse.x <-300 && this.velocity.x > 0){
+
+			ball.velocity.x = - ball.velocity.x
+
+
+		}
+
+		if(puntos_doble===true){
+		
+        	score+=2
+		
+        }else{
+		
+        	score +=1;
+
+		}
+
+        if(score>localStorage.getItem('high_score')){
+
+                high_score=score;
+
+                localStorage.setItem('high_score', high_score);
+ 
+            }
+		
+		if(this.velocity.y>0 && this.velocity.y<16){
+		
+		this.velocity.y +=.3;
+	
+		
+		}else if(this.velocity.y>-16){
+
+		this.velocity.y -=.3;
+
+	
+			}
+
+		if(this.velocity.x>0 && this.velocity.x<16){
+		
+		
+		this.velocity.x +=.3;
+		
+		}else if(this.velocity.x>-16){
+
+		this.velocity.x -=.3;
+	
+			}
+
+	}
+
+	if(ball.y > window.innerHeight){
+
+		audio_lose.play();
 
 			aparecer = false;
 
@@ -666,12 +811,16 @@ var audio_score = document.getElementById("audio_score");
 			this.x=window.innerWidth/2;
 			
 			this.y=30;
+
+			this.masa = 1;
 			
-			this.velx=-this.velx
+			this.velocity.x=-this.velocity.x
 			
-			this.vely = 0;
+			this.velocity.y = 0;
 			
-			this.velx = 0;
+			this.velocity.x = 0;
+
+			//admob.interstitial.show()
 
            if(score>=1 && score<= 5){
 
@@ -727,122 +876,27 @@ var audio_score = document.getElementById("audio_score");
 
            localStorage.setItem("coins", coins)
 
-            
-
-
-           
-			
-
-			perder = true;
-
-			close_m = 0;
-
-			 menu_perder = 1;
-
-			 //admob.interstitial.show()
-
-			 if(localStorage.getItem("coins")){
+            if(localStorage.getItem("coins")){
 
 				document.getElementById("coin").innerHTML = localStorage.getItem("coins");
+
+				document.getElementById("coin_m").innerHTML = localStorage.getItem("coins");
 			}else{
 				document.getElementById("coin").innerHTML = 0;
-			}
-			 
+				document.getElementById("coin_m").innerHTML = 0
+		}
 
+
+		perder =true;
+
+		menu_perder =1;
 	}
-
 	
-	if(this.x >= mouse.x-20 && this.x<= mouse.x+(r_width) && this.y+20 >= y_r){
-		
-
-			audio_score.play();
-
-			
 
 
 
-		this.vely=-this.vely;
-		
-		if(touch_resultado<-5){
-
-		if(this.velx<0){
-		
-        	this.velx=-this.velx;
-
-		}
-
-	}else if(touch_resultado>5){
-
-		if(this.velx>0){
-		
-        	this.velx=-this.velx;
-
-		}
-
-	}
-		
-		
-		
-
-		if(puntos_doble===true){
-		
-        	score+=2
-		
-        }else{
-		
-        	score +=1;
-
-		}
-
-        if(score>localStorage.getItem('high_score')){
-
-                high_score=score;
-
-                localStorage.setItem('high_score', high_score);
- 
-            }
-		
-		if(this.vely>0){
-		
-		this.vely +=.3;
-	
-		
-		}else {
-
-		this.vely -=.3;
-
-	
-			}
-
-		if(this.velx>0){
-		
-		
-		this.velx +=.3;
-		
-		}else {
-
-		this.velx -=.3;
-	
-			}
-		}
 
 		
-
-
-
-
-		if(this.x >= mouse.x && this.x<= mouse.x+(r_width)){
-
-			
-			
-            ball_over_r =1;
-
-		}else{
-			
-            ball_over_r=0;
-		
-        }
-
 		//-------------------------------TRANSPORTAR PELOTA---------------------------------------------------
 
 	if(draw && this.x<=portal_x&&this.y>portal_y&&this.y<portal_y+portal_altura && portal_posicion<.5 ){
@@ -851,27 +905,29 @@ var audio_score = document.getElementById("audio_score");
 			
             this.x= Math.random()*(canvas_width-35);
 
+
+
 			doSetTimeout();
 
 			if(this.orientacion>.5){
 
-				this.velx=-this.velx;
+				this.velocity.x=-this.velocity.x;
 			}
 
-			if(this.vely>0){
+			if(this.velocity.y>0){
 		
-			this.vely +=1;
+			this.velocity.y +=1;
 		
 			}
 			
-			if(this.velx>0){
+			if(this.velocity.x>0){
 		
 		
-			this.velx +=1;
+			this.velocity.x +=1;
 		
 			}else {
 
-			this.velx -=1;
+			this.velocity.x -=1;
 	
 			}
 
@@ -889,23 +945,23 @@ var audio_score = document.getElementById("audio_score");
 
 			if(this.orientacion>.5){
 
-				this.velx=-this.velx;
+				this.velocity.x=-this.velocity.x;
 			}			
 
-			if(this.vely>0){
+			if(this.velocity.y>0){
 		
-			this.vely +=1;
+			this.velocity.y +=1;
 			
 			}
 			
-			if(this.velx>0){
+			if(this.velocity.x>0){
 		
 		
-			this.velx +=1;
+			this.velocity.x +=1;
 		
 			}else {
 
-			this.velx -=1;
+			this.velocity.x -=1;
 	
 			}
 		
@@ -920,6 +976,8 @@ var audio_score = document.getElementById("audio_score");
 
 		if(poder==0){
 
+			ball_sound.play();
+
 			aparecer = true;
 
 			bola2();
@@ -927,6 +985,8 @@ var audio_score = document.getElementById("audio_score");
 
 		}
 		if(poder==1){
+
+			slow_sound.play();
 
 			lentitud=true;
 
@@ -936,12 +996,20 @@ var audio_score = document.getElementById("audio_score");
 		}
 		if(poder==2){
 
+
+
+			double_sound.play();
+
 			puntos_doble = true;
 
 		}
 		if(poder==3){
 
 			velocidad=true;
+
+
+
+			speed_sound.play();
 
 			velocidad_aumentar();
 
@@ -954,11 +1022,13 @@ var audio_score = document.getElementById("audio_score");
 
 		if(poder==4){
 
-			this.velx=-this.velx;
+			reverse_sound.play();
 
-			if(this.vely<0){
+			this.velocity.x=-this.velocity.x;
 
-				this.vely= -this.vely;
+			if(this.velocity.y<0){
+
+				this.velocity.y= -this.velocity.y;
 			}
 
 			
@@ -970,9 +1040,9 @@ var audio_score = document.getElementById("audio_score");
 
 	
 
-	this.x+=this.velx;
+	this.x+=this.velocity.x;
 	
-	this.y+=this.vely;
+	this.y+=this.velocity.y;
 
 	this.draw();
 	
@@ -981,34 +1051,37 @@ var audio_score = document.getElementById("audio_score");
 
 }
 
+
+
 function velocidad_aumentar(){
 
-	
+		
 
 
 		if(velocidad){
 			
-            if(ball.velx>0){
+            if(ball.velocity.x>0){
 
-            	ball.velx+=5;
+            	
+            	ball.velocity.x+=5;
 			
             }
 			
-            if(ball.velx<0){
+            if(ball.velocity.x<0){
 
-            	ball.velx-=5;
+            	ball.velocity.x-=5;
 				
             }
 			
-            if(ball.vely>0){
+            if(ball.velocity.y>0){
 			
-            	ball.vely+=5;
+            	ball.velocity.y+=5;
 			
             }
 			
-            if(ball.vely<0){
+            if(ball.velocity.y<0){
 			
-            	ball.vely-=5
+            	ball.velocity.y-=5
           }
 
         }
@@ -1022,51 +1095,51 @@ function lentitud_disminuir(){
 
 		if(lentitud){
 			
-            if(ball.velx>0 && ball.velx<=5){
+            if(ball.velocity.x>0 && ball.velocity.x<=5){
 
-            	ball.velx=3;
+            	ball.velocity.x=3;
 			
             }
 			
-            if(ball.velx<0 && ball.velx>=-5){
+            if(ball.velocity.x<0 && ball.velocity.x>=-5){
 
-            	ball.velx=-3;
+            	ball.velocity.x=-3;
 				
             }
 
-            if(ball.velx>0 && ball.velx>5){
+            if(ball.velocity.x>0 && ball.velocity.x>5){
 
-            	ball.velx=5;
+            	ball.velocity.x=5;
 			
             }
 			
-            if(ball.velx<0 && ball.velx<=-5){
+            if(ball.velocity.x<0 && ball.velocity.x<=-5){
 
-            	ball.velx=-5
+            	ball.velocity.x=-5
 				
             }
 			
-             if(ball.vely>0 && ball.vely<=5){
+             if(ball.velocity.y>0 && ball.velocity.y<=5){
 
-            	ball.vely=3;
+            	ball.velocity.y=3;
 			
             }
 			
-            if(ball.vely<0 && ball.vely>=-5){
+            if(ball.velocity.y<0 && ball.velocity.y>=-5){
 
-            	ball.vely=-3;
+            	ball.velocity.y=-3;
 				
             }
 
-            if(ball.vely>0 && ball.vely>5){
+            if(ball.velocity.y>0 && ball.velocity.y>5){
 
-            	ball.vely=5;
+            	ball.velocity.y=5;
 			
             }
 			
-            if(ball.vely<0 && ball.vely<=-5){
+            if(ball.velocity.y<0 && ball.velocity.y<=-5){
 
-            	ball.vely=-5
+            	ball.velocity.y=-5
 				
             }
 
@@ -1079,6 +1152,8 @@ var bola2_x = 30;
 var bola2_velx = 5;
 var bola2_vely = 5;
 var ball2_over_r
+
+
 
 function bola2(){
 
@@ -1097,6 +1172,9 @@ function bola2(){
 
     c.fillStyle = "white";
 
+    c.shadowColor = color;
+
+    c.shadowBlur = blur
   
 	c.drawImage(prueba_in,bola2_x,bola2_y);
 
@@ -1106,6 +1184,16 @@ function bola2(){
 	bola2_y+=bola2_vely;
 
 	if(bola2_x+20>=canvas_width || bola2_x<0){
+
+		wallBounce = true;
+
+		if(wallBounce){
+
+			audio_bounce.pause();
+			audio_bounce.currentTime = 0;
+			audio_bounce.play();
+			wallBounce = false;
+		}
 		bola2_velx=-bola2_velx
 	}
 
@@ -1113,16 +1201,38 @@ function bola2(){
 		bola2_vely=-bola2_vely
 	}
 
-	if(bola2_x>mouse.x && bola2_x < mouse.x+r_width && bola2_y+17 >= y_r){
+	if(getDistance_y(bola2_y, raq.y) <= 20 && getDistance_y(bola2_y, raq.y) > 5 && getDistance_x(bola2_x, raq.x) < 20 && getDistance_x(bola2_x, raq.x) > -r_width){
 
 		var audio_score = document.getElementById("audio_score");
 
-		audio_score.play();
+
+		
+
+		soundBouncePlay = true;
+
+		if(soundBouncePlay){
+
+			audio_score.pause();
+			audio_score.currentTime = 0;
+			audio_score.play();
+			soundBouncePlay = false;
+		}
+
 
 		bola2_vely=-bola2_vely
 
-		score +=1;
+		if(velocidadMouse.x > 300 && bola2_velx <0 || velocidadMouse.x <-300 && bola2_x > 0){
 
+			bola2_velx = - bola2_velx
+
+
+		}
+
+		
+		
+        	score +=1;
+
+	
         if(score>localStorage.getItem('high_score')){
 
                 high_score=score;
@@ -1130,9 +1240,15 @@ function bola2(){
                 localStorage.setItem('high_score', high_score);
  
             }
+	
+
+		
+
 	}
 
-	if(bola2_y+15>y_r && ball2_over_r ==0){
+	
+
+	if(bola2_y > window.innerHeight){
 
 		audio_lose.play();
 
@@ -1148,11 +1264,11 @@ function bola2(){
 			
 			ball.y=30;
 			
-			ball.velx=-ball.velx
+			ball.velocity.x=-ball.velocity.x
 			
-			ball.vely = 0;
+			ball.velocity.y = 0;
 			
-			ball.velx = 0;
+			ball.velocity.x = 0;
 
 			bola2_y = 10;
 
@@ -1232,10 +1348,12 @@ function bola2(){
 			 if(localStorage.getItem("coins")){
 
 				document.getElementById("coin").innerHTML = localStorage.getItem("coins");
+
+				document.getElementById("coin_m").innerHTML = localStorage.getItem("coins");
 			}else{
 				document.getElementById("coin").innerHTML = 0;
-			}
-
+				document.getElementById("coin_m").innerHTML = 0
+		}
 
 
 	}
@@ -1261,8 +1379,15 @@ function doSetTimeout(){
 
 function doSetTimeout_2(){
 
-	if(close==false){
+
+
+	if(close==false && menu_perder != 1){
+
+
+
+				
 	
+		
 
 		portal_posicion = Math.random();
 
@@ -1282,6 +1407,10 @@ function doSetTimeout_2(){
 	}
 
 		if(close===true){
+
+			
+
+		
 
             cerrar_portales=1;
 
@@ -1395,7 +1524,6 @@ function puntos(){
 function animar(){
 
 
-
 document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 
     
@@ -1458,6 +1586,8 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 //-------------------------------DIBUJAR PORTALES---------------------------------
 
 	if(draw){
+
+	
      c.shadowBlur = 0;
 
         if(portal_altura<=window.innerHeight/4){
@@ -1563,18 +1693,20 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 	
 //-----------------------------------DIBUJAR RAQUETA--------------------------
 
-	c.beginPath();
-  c.shadowBlur = 0;
 	
-	c.fillRect(x_r,y_r,r_width,10);
+	raq.update();
 
+	if(mouse.x){
 
+		raq.x =mouse.x-75
 
-	c.fillStyle = "white";
+	}else{
+
+		raq.x = window.innerWidth/2-75
+	}
+
 	
 
-
-  c.closePath();
 
 
 //-----------------------------------------DIBUJAR SCORE-----------------------
@@ -1689,11 +1821,11 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 			
 			if(imagen_height>=window.innerHeight/1){
 
-				document.getElementById("score").setAttribute("style", "visibility:visible")
+				document.getElementById("score").setAttribute("style", "display:initial")
 
 				document.getElementById("score").innerHTML = score;
 
-				document.getElementById("pausa").setAttribute("style", "visibility: hidden")
+				document.getElementById("pausa").setAttribute("style", "display:none")
 
 		
 
@@ -1702,9 +1834,9 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 
 				
 
-				document.getElementById("coins_gotten").setAttribute("style", "visibility:visible")
+				document.getElementById("coins_gotten").setAttribute("style", "display:initial")
 
-				document.getElementById("coins_img_gotten").setAttribute("style", "visibility:visible")
+				document.getElementById("coins_img_gotten").setAttribute("style", "display:initial")
 				
                 close_m=2;	
 
@@ -1725,11 +1857,11 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 
                 coins_partida=0;
 
-                document.getElementById('pausa').setAttribute("style", 'visibility:visible')
+                document.getElementById('pausa').setAttribute("style", 'display:initial')
 
-                document.getElementById("coins_gotten").setAttribute("style", "visibility: hidden")
+                document.getElementById("coins_gotten").setAttribute("style", "display:none")
 
-				document.getElementById("coins_img_gotten").setAttribute("style", "visibility: hidden")
+				document.getElementById("coins_img_gotten").setAttribute("style", "display:none")
             
                 menu_perder=0;
                 
@@ -1758,7 +1890,7 @@ document.getElementById('local').innerHTML = localStorage.getItem('high_score')
 
                     boton_pausa.height=0;
 
-                    document.getElementById("score").setAttribute("style", "visibility: hidden")
+                    document.getElementById("score").setAttribute("style", "display:none")
 
                     cancelAnimationFrame(animation_frame);
 
@@ -1783,18 +1915,24 @@ animar();
 
 function borrar(){
 
+	portal_sound.pause();
+
+			portal_sound.currentTime = 0
+
 	coins_partida=0;
-	 document.getElementById("juego").setAttribute("style", "visibility: hidden")
+	 document.getElementById("juego").setAttribute("style", "display:none")
 
-	 document.getElementById("score").setAttribute("style", "visibility: hidden")
+	 document.getElementById("score").setAttribute("style", "display:none")
 	
-	document.getElementById("coins_gotten").setAttribute("style", "visibility: hidden")
+	document.getElementById("coins_gotten").setAttribute("style", "display:none")
 
-	document.getElementById("coins_img_gotten").setAttribute("style", "visibility: hidden")
+	document.getElementById("coins_img_gotten").setAttribute("style", "display:none")
 
-	document.getElementById("coin_img").setAttribute("style", "visibility:visible");
+	document.getElementById("coin_img").setAttribute("style", "display:initial");
 
-	document.getElementById("coin").setAttribute("style", "visibility:visible");
+	document.getElementById("coin").setAttribute("style", "display:initial");
+
+	document.getElementById("coin_m").setAttribute("style", "display:initial");
 	
 	c.beginPath();
 	
@@ -1804,9 +1942,9 @@ function borrar(){
     
     ball.y=0;
     
-    ball.velx=0;
+    ball.velocity.x=0;
     
-    ball.vely=0;
+    ball.velocity.y=0;
 
     boton_pausa.width=0;
 
@@ -1814,7 +1952,7 @@ function borrar(){
     
 	juego_activo = false;
     
-    document.getElementById("menu").setAttribute("style","visible")
+    document.getElementById("menu").setAttribute("style","display:initial")
     
     }
 }

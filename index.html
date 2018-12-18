@@ -3,7 +3,7 @@
 <html>
     <head>
 
-    	<script>/*document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')*/</script>
+    	<script>//document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
     	
         <meta charset="utf-8">
@@ -15,20 +15,21 @@
 
         
         
-		<title>Rebound</title>
+		<title >Rebound</title>
 
 		<script src="https://connect.facebook.net/en_US/fbinstant.6.0.js"></script>
 
-       	
-		<script type="text/javascript" src="js/game.js"></script>
 
-		<script type="text/javascript" src="js/edit.js"></script>
+       	
+
 
 
 
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 
 		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+		<link rel="stylesheet" type="text/css" href="css/alert.css">
 
 		<link rel="icon"  href="img/favicon.ico">
 		
@@ -44,6 +45,41 @@
 	<div id="background-image"></div>
         
     <div id="page" class="visible">
+
+    	<div class="alert" id="alert">
+
+    		<h1>New ball!</h1>
+    		
+    		<img class="pewds" src="img/balls/pewds_big.png">
+
+    		<h2>Subscribe to Pewdiepie to unlock it!</h2>
+
+    		<table >
+    			
+    			<tbody>
+    				
+    				<tr>
+    					
+    					<td>
+    						<img src="img/sub.png" onclick="sub()">
+
+
+    					</td>
+
+    					<td>
+    						<img src="img/later.png" onclick="later()">
+
+    						
+    					</td>
+
+    				</tr>
+
+    			</tbody>
+
+    		</table>
+
+    		
+    	</div>
 
     	<div id="juego">
 
@@ -90,11 +126,11 @@
 
   		<img src="img/web.png" id="web" onclick="window.open('https://appsbylogic.github.io/','_blank')">
 
-		<h6 id="version" href='asdasd.html'><a href="asdasd.html">V 3.0</a></h6>
+		<h6 id="version" href='asdasd.html'><a href="asdasd.html">V 4.0</a></h6>
 
 		
 
-		<h1 id="title">REBOUND</h1>
+		<h1 id="title" >REBOUND</h1>
 	
 		<h1 id="h1"  onclick="ocultar();">PLAY</h1>
 
@@ -105,11 +141,13 @@
 
 		<img src="img/coin.png" id="coin_img">
 
+		
+		
 
 
 		</div>
-		<h1 id="coin">0</h1>
-		
+
+		<h1 id="coin_m">0</h1>
 		
 		
 		<img id="prueba_in_game" src="img/balls/in game/prueba.png" style="visibility:hidden">
@@ -143,41 +181,81 @@
 		<img id="pencil_in_game" src="img/balls/in game/pencil.png" style="visibility:hidden">
 		<img id="cookie_in_game" src="img/balls/in game/cookie.png" style="visibility:hidden">
 		<img id="novum_in_game" src="img/balls/in game/novum.png" style="visibility:hidden">
-
+		<img id="pewds_in_game" src="img/balls/in game/pewds.png" style="visibility:hidden">
 
 		<audio autoplay loop id="audio">
     	
-    	<source src="song.mp3" type="audio/mp3">
+    	<source src="sounds/song.mp3" type="audio/mp3">
     </audio>
 
     	<audio  id="audio_score">
     	
-    	<source src="Bounce.mp3" type="audio/mp3">
+    	<source src="sounds/Bounce.mp3" type="audio/mp3">
+    </audio>
+
+    <audio  id="audioWallBounce">
+    	
+    	<source src="sounds/Score.mp3" type="audio/mp3">
     </audio>
 
     <audio   id="audio_bounce">
     	
-    	<source src="Bounce.mp3" type="audio/mp3">
+    	<source src="sounds/Bounce.mp3" type="audio/mp3">
     </audio>
 
     <audio  id="audio_lose">
     	
-    	<source src="Lose.mp3" type="audio/mp3">
+    	<source src="sounds/Lose.mp3" type="audio/mp3">
     </audio>
     
     <audio  id="audio_buy">
     	
-    	<source src="Buy.mp3" type="audio/mp3">
+    	<source src="sounds/Buy.mp3" type="audio/mp3">
     </audio>
 
     <audio  id="audio_buy_fail">
     	
-    	<source src="Buy fail.mp3" type="audio/mp3">
+    	<source src="sounds/Buy fail.mp3" type="audio/mp3">
+    </audio>
+
+    <audio  id="speed">
+    	
+    	<source src="sounds/speed.mp3" type="audio/mp3">
+    </audio>
+
+    <audio  id="slow">
+    	
+    	<source src="sounds/slow.mp3" type="audio/mp3">
+    </audio>
+
+    <audio  id="double_sound" >
+    	
+    	<source src="sounds/double points.mp3" type="audio/mp3">
+    </audio>
+
+    <audio  id="balls_sound" >
+    	
+    	<source src="sounds/balls.mp3" type="audio/mp3">
+    </audio>
+
+    <audio  id="reverse_sound">
+    	
+    	<source src="sounds/reverse.mp3" type="audio/mp3">
+    </audio>
+
+    <audio  id="portal_sound">
+    	
+    	<source src="sounds/portal.mp3" type="audio/mp3">
     </audio>
 
 	</div>
 		
 		<div id="div_edit" class="edit">
+
+			<img src="img/coin.png" id="coin_img">
+
+		
+		<h1 id="coin">0</h1>
 			<p id="counter"></p>
 				<img src=""  id="shadow" onclick="blur_color();" >
 			<a href="#" onclick="back();" id="back" ><img src="img/atras.png" width="20" height="auto"></a>
@@ -212,6 +290,7 @@
 			<img id="pencil" src="img/balls/pencil.png" style="visibility:hidden">
 			<img id="cookie" src="img/balls/cookie.png" style="visibility:hidden">
 			<img id="novum" src="img/balls/novum.png" style="visibility:hidden">
+			<img id="pewds" src="img/balls/pewds.png" style="visibility:hidden">
 
 			<canvas id="canvas_edit" ></canvas>
 			<img id="izquierda" src="img/izquierda.png" onclick="cambiar_skin_izquierda();">
@@ -229,6 +308,8 @@
 			
 		</div>
 
+
+
 	<script type="text/javascript">
 			
 			if(localStorage.getItem("coins")){
@@ -242,10 +323,17 @@
 
 	
 
+		<script type="text/javascript" src="js/game.js"></script>
 
+		<script type="text/javascript" src="js/raqueta.js"></script>
 
+		<script type="text/javascript" src="js/colision.js"></script>
 
-    
+		<script type="text/javascript" src="js/edit.js"></script>
+
+		<script type="text/javascript" src="js/sub.js"></script>
+
+	
 
 	
     </body>
