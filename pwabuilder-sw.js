@@ -4,9 +4,6 @@ const CACHE = "pwabuilder-precache";
 const precacheFiles = [
   /* Add an array of files to precache for your app */
   'index.html',
-  'css/alert.css',
-  'css/index.css',
-  'css/responsive.css',
   'sounds/balls.mp3',
   'sounds/Bounce.mp3',
   'sounds/Buy fail.mp3',
