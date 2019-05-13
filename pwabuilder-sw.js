@@ -11,7 +11,6 @@ const precacheFiles = [
   'js/sub.js',
   'js/game.js',
   'js/colision.js',
-  'js/default.png'
 
 ];
 
