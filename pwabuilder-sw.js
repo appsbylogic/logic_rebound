@@ -124,7 +124,7 @@ const precacheFiles = [
   'img/balls/in game/russia.png',
   'img/balls/in game/spinner.png',
   'img/balls/in game/sword.png',
-  'img/balls/in game/wefere.png',
+  'img/balls/in game/wefere.png'
 
 
 ];
