@@ -5,7 +5,7 @@
     "scope": "/logic_rebound/",
     "display": "standalone",
     "start_url": "https://appsbylogic.github.io/logic_rebound/",
-    "short_name": "Accurate",
+    "short_name": "Rebound",
     "theme_color": "#3A3A3A",
     "description": "Bounce the ball and score!",
     "orientation": "portrait",
